@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net472</TargetFramework>
+        <RootNamespace>XenogermPlanner.Tests</RootNamespace>
+        <AssemblyName>XenogermPlanner.Tests</AssemblyName>
+        <Nullable>disable</Nullable>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <IsPackable>false</IsPackable>
+        <IsTestProject>true</IsTestProject>
+    </PropertyGroup>
+
+    <Import Project="..\..\src\XenogermPlanner.Local.props" Condition="Exists('..\..\src\XenogermPlanner.Local.props')"/>
+
+    <Target Name="ValidateLocalConfiguration" BeforeTargets="ResolveReferences">
+        <Error Condition="'$(RimWorldManagedDir)' == ''" Text="RimWorldManagedDir is not configured. Create src\XenogermPlanner.Local.props and set the path to RimWorld's Managed directory."/>
+        <Error Condition="'$(RimWorldManagedDir)' != '' and !Exists('$(RimWorldManagedDir)\Assembly-CSharp.dll')" Text="Assembly-CSharp.dll was not found in '$(RimWorldManagedDir)'. Update RimWorldManagedDir in src\XenogermPlanner.Local.props."/>
+    </Target>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\XenogermPlanner\XenogermPlanner.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.8.1"/>
+        <PackageReference Include="NUnit" Version="4.6.1"/>
+        <PackageReference Include="NUnit3TestAdapter" Version="4.6.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(RimWorldManagedDir)' != ''">
+        <Reference Include="Assembly-CSharp">
+            <HintPath>$(RimWorldManagedDir)\Assembly-CSharp.dll</HintPath>
+            <Private>true</Private>
+        </Reference>
+
+        <Reference Include="UnityEngine" Condition="Exists('$(RimWorldManagedDir)\UnityEngine.dll')">
+            <HintPath>$(RimWorldManagedDir)\UnityEngine.dll</HintPath>
+            <Private>true</Private>
+        </Reference>
+
+        <Reference Include="UnityEngine.CoreModule" Condition="Exists('$(RimWorldManagedDir)\UnityEngine.CoreModule.dll')">
+            <HintPath>$(RimWorldManagedDir)\UnityEngine.CoreModule.dll</HintPath>
+            <Private>true</Private>
+        </Reference>
+
+        <Reference Include="UnityEngine.TextRenderingModule" Condition="Exists('$(RimWorldManagedDir)\UnityEngine.TextRenderingModule.dll')">
+            <HintPath>$(RimWorldManagedDir)\UnityEngine.TextRenderingModule.dll</HintPath>
+            <Private>true</Private>
+        </Reference>
+
+        <Reference Include="UnityEngine.IMGUIModule" Condition="Exists('$(RimWorldManagedDir)\UnityEngine.IMGUIModule.dll')">
+            <HintPath>$(RimWorldManagedDir)\UnityEngine.IMGUIModule.dll</HintPath>
+            <Private>true</Private>
+        </Reference>
+    </ItemGroup>
+</Project>

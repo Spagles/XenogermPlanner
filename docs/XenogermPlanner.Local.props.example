@@ -1,0 +1,18 @@
+<Project>
+    <PropertyGroup>
+        <!--
+        Set this to the Managed directory of your local RimWorld installation.
+        Example for a default Steam installation on Windows:
+        C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed
+        -->
+        <RimWorldManagedDir>C:\Path\To\RimWorld\RimWorldWin64_Data\Managed</RimWorldManagedDir>
+
+        <!--
+        Set this to the Assemblies directory of the local RimWorld mod installation
+        used for development deployment.
+        Example:
+        C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\XenogermPlanner\Assemblies\Current
+        -->
+        <RimWorldModAssembliesDir>C:\Path\To\RimWorld\Mods\XenogermPlanner\Assemblies\Current</RimWorldModAssembliesDir>
+    </PropertyGroup>
+</Project>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <XenogermPlanner.Planner.PlansTitle>Plans</XenogermPlanner.Planner.PlansTitle>
+    <XenogermPlanner.Planner.DetailsTitle>{0} plan details</XenogermPlanner.Planner.DetailsTitle>
+    <XenogermPlanner.Planner.EmptyDetailsTitle>Plan details</XenogermPlanner.Planner.EmptyDetailsTitle>
+    <XenogermPlanner.Planner.CreatePlan>Create</XenogermPlanner.Planner.CreatePlan>
+    <XenogermPlanner.Planner.ImportPlan>Import custom xenogerm</XenogermPlanner.Planner.ImportPlan>
+    <XenogermPlanner.Planner.RefreshDescription>Rescan genepacks on the current map and update plan status.</XenogermPlanner.Planner.RefreshDescription>
+    <XenogermPlanner.Planner.Locate>Locate</XenogermPlanner.Planner.Locate>
+    <XenogermPlanner.Planner.TargetNavigationHint>Hover to highlight on the map. Click to jump to this target.</XenogermPlanner.Planner.TargetNavigationHint>
+    <XenogermPlanner.Planner.OpenInfoCard>Open info card</XenogermPlanner.Planner.OpenInfoCard>
+    <XenogermPlanner.Planner.OpenInfoCardHint>Right-click to open the info card.</XenogermPlanner.Planner.OpenInfoCardHint>
+    <XenogermPlanner.Planner.PastePlan>Paste</XenogermPlanner.Planner.PastePlan>
+    <XenogermPlanner.Planner.DuplicatePlan>Duplicate</XenogermPlanner.Planner.DuplicatePlan>
+    <XenogermPlanner.Planner.DuplicatePlanName>{0} copy</XenogermPlanner.Planner.DuplicatePlanName>
+    <XenogermPlanner.Planner.CopyPlan>Copy</XenogermPlanner.Planner.CopyPlan>
+    <XenogermPlanner.Planner.EditPlan>Edit</XenogermPlanner.Planner.EditPlan>
+    <XenogermPlanner.Planner.DeletePlan>Delete</XenogermPlanner.Planner.DeletePlan>
+    <XenogermPlanner.Planner.PlanCopied>Plan copied to clipboard.</XenogermPlanner.Planner.PlanCopied>
+    <XenogermPlanner.Planner.InvalidClipboardPlan>The clipboard does not contain a valid xenogerm plan.</XenogermPlanner.Planner.InvalidClipboardPlan>
+    <XenogermPlanner.Planner.UnsupportedClipboardPlanVersion>This clipboard plan uses a version that this copy of Xenogerm Planner cannot read.</XenogermPlanner.Planner.UnsupportedClipboardPlanVersion>
+    <XenogermPlanner.Planner.PasteDegradedPlanConfirmation>Some genes in this clipboard plan are not available with the current mods. Paste the plan and keep those unavailable genes in it?</XenogermPlanner.Planner.PasteDegradedPlanConfirmation>
+
+    <XenogermPlanner.Planner.SearchPlans>Search</XenogermPlanner.Planner.SearchPlans>
+    <XenogermPlanner.Planner.NoSearchResults>No plans match the current search.</XenogermPlanner.Planner.NoSearchResults>
+    <XenogermPlanner.Planner.EmptyPlans>No xenogerm plans yet.</XenogermPlanner.Planner.EmptyPlans>
+    <XenogermPlanner.Planner.NoSelectedPlan>Select a plan to view its details.</XenogermPlanner.Planner.NoSelectedPlan>
+    <XenogermPlanner.Planner.DataUnavailable>Plan information is unavailable.</XenogermPlanner.Planner.DataUnavailable>
+    <XenogermPlanner.Planner.UnnamedPlan>Unnamed plan</XenogermPlanner.Planner.UnnamedPlan>
+
+    <XenogermPlanner.Notifications.ReadinessEnabled>Notify when this plan becomes ready</XenogermPlanner.Notifications.ReadinessEnabled>
+    <XenogermPlanner.Notifications.ReadinessEnabledDescription>Send a message when this plan becomes ready. It can notify you again after the plan becomes not ready and is completed once more.</XenogermPlanner.Notifications.ReadinessEnabledDescription>
+    <XenogermPlanner.Notifications.PlanReady>Xenogerm plan "{0}" is ready.</XenogermPlanner.Notifications.PlanReady>
+
+    <XenogermPlanner.Planner.DesiredGenes>Planned genes</XenogermPlanner.Planner.DesiredGenes>
+    <XenogermPlanner.Planner.DesiredGeneCount>Planned genes: {0}</XenogermPlanner.Planner.DesiredGeneCount>
+    <XenogermPlanner.Planner.SummaryMode>Goal: {0}</XenogermPlanner.Planner.SummaryMode>
+    <XenogermPlanner.Planner.SummaryReadiness>Status: {0}</XenogermPlanner.Planner.SummaryReadiness>
+    <XenogermPlanner.Planner.SummaryGenes>Genes: {0} planned · {1} available · {2} missing</XenogermPlanner.Planner.SummaryGenes>
+    <XenogermPlanner.Planner.SummaryGenesDegraded>Genes: {0} planned · {1} available · {2} missing · {3} unavailable</XenogermPlanner.Planner.SummaryGenesDegraded>
+
+    <XenogermPlanner.Planner.AssemblerScopeTitle>Gene Assembler</XenogermPlanner.Planner.AssemblerScopeTitle>
+    <XenogermPlanner.Planner.AssemblerSelector>Assembler</XenogermPlanner.Planner.AssemblerSelector>
+    <XenogermPlanner.Planner.SelectAssembler>Select a Gene Assembler...</XenogermPlanner.Planner.SelectAssembler>
+    <XenogermPlanner.Planner.ClearAssemblerSelection>Clear selection</XenogermPlanner.Planner.ClearAssemblerSelection>
+    <XenogermPlanner.Planner.AssemblerDisplayName>{0} ({1}, {2})</XenogermPlanner.Planner.AssemblerDisplayName>
+    <XenogermPlanner.Planner.NoAssemblers>No Gene Assemblers are available on the current map.</XenogermPlanner.Planner.NoAssemblers>
+    <XenogermPlanner.Planner.NoSelectedAssembler>Select a Gene Assembler to check whether its connected genepacks and current facilities can assemble this plan.</XenogermPlanner.Planner.NoSelectedAssembler>
+    <XenogermPlanner.Planner.AssemblerReadiness>Status: {0}</XenogermPlanner.Planner.AssemblerReadiness>
+    <XenogermPlanner.Planner.AssemblerGeneScope>Gene availability: {0}</XenogermPlanner.Planner.AssemblerGeneScope>
+    <XenogermPlanner.Planner.AssemblerVisibleGenepacks>Connected genepacks: {0}</XenogermPlanner.Planner.AssemblerVisibleGenepacks>
+    <XenogermPlanner.Planner.AssemblerScopeCovered>Genes available: {0}</XenogermPlanner.Planner.AssemblerScopeCovered>
+    <XenogermPlanner.Planner.AssemblerScopeMissing>Genes missing: {0}</XenogermPlanner.Planner.AssemblerScopeMissing>
+    <XenogermPlanner.Planner.AssemblerScopeExactPayloadConflict>This assembler cannot produce the exact gene set without extra genes.</XenogermPlanner.Planner.AssemblerScopeExactPayloadConflict>
+    <XenogermPlanner.Planner.AssemblerDetailsShow>Details ▼</XenogermPlanner.Planner.AssemblerDetailsShow>
+    <XenogermPlanner.Planner.AssemblerDetailsHide>Details ▲</XenogermPlanner.Planner.AssemblerDetailsHide>
+    <XenogermPlanner.AssemblerReadinessStatus.Blocked>Blocked</XenogermPlanner.AssemblerReadinessStatus.Blocked>
+    <XenogermPlanner.AssemblerReadinessStatus.Unknown>Unknown</XenogermPlanner.AssemblerReadinessStatus.Unknown>
+    <XenogermPlanner.AssemblerBlocker.MissingPrerequisite>The genepacks needed for this plan do not provide these required genes: {0}.</XenogermPlanner.AssemblerBlocker.MissingPrerequisite>
+    <XenogermPlanner.AssemblerBlocker.AssemblerUnpowered>The selected Gene Assembler has no power.</XenogermPlanner.AssemblerBlocker.AssemblerUnpowered>
+    <XenogermPlanner.AssemblerBlocker.UsedGeneBankUnpowered>A Gene Bank containing one of the required genepacks has no power.</XenogermPlanner.AssemblerBlocker.UsedGeneBankUnpowered>
+    <XenogermPlanner.AssemblerBlocker.InsufficientComplexity>Complexity required: {0}. Current capacity: {1}.</XenogermPlanner.AssemblerBlocker.InsufficientComplexity>
+    <XenogermPlanner.AssemblerBlocker.ArchogeneticsResearchMissing>Archogenetics research is required to use the needed genepacks.</XenogermPlanner.AssemblerBlocker.ArchogeneticsResearchMissing>
+    <XenogermPlanner.AssemblerBlocker.InsufficientArchiteCapsules>Archite capsules required: {0}. Available: {1}.</XenogermPlanner.AssemblerBlocker.InsufficientArchiteCapsules>
+    <XenogermPlanner.AssemblerBlocker.Unknown>Assembly is blocked for an unknown reason.</XenogermPlanner.AssemblerBlocker.Unknown>
+
+    <XenogermPlanner.Planner.GeneCoverage>Gene availability</XenogermPlanner.Planner.GeneCoverage>
+    <XenogermPlanner.Planner.GeneColumn>Gene</XenogermPlanner.Planner.GeneColumn>
+    <XenogermPlanner.Planner.StateColumn>Availability</XenogermPlanner.Planner.StateColumn>
+    <XenogermPlanner.Planner.AvailableGenepacksColumn>Genepacks with this gene</XenogermPlanner.Planner.AvailableGenepacksColumn>
+    <XenogermPlanner.Planner.PotentialDonorsColumn>Potential donors</XenogermPlanner.Planner.PotentialDonorsColumn>
+    <XenogermPlanner.Planner.PotentialDonorCountTooltip>Potential donors on the current map for {1}: {0}. This gene may be selected during extraction, but a specific extraction can produce different genes.</XenogermPlanner.Planner.PotentialDonorCountTooltip>
+    <XenogermPlanner.Planner.PotentialDonorsUnavailable>Open a colony map to check potential donors.</XenogermPlanner.Planner.PotentialDonorsUnavailable>
+    <XenogermPlanner.Planner.NoResolvedGeneCoverage>No planned genes are available to check.</XenogermPlanner.Planner.NoResolvedGeneCoverage>
+    <XenogermPlanner.Planner.NoSourceGenepacks>—</XenogermPlanner.Planner.NoSourceGenepacks>
+    <XenogermPlanner.Planner.GenepackTooltipTitle>Genepack</XenogermPlanner.Planner.GenepackTooltipTitle>
+    <XenogermPlanner.Planner.StoredGenepackCount>Matching genepacks shown here: {0}</XenogermPlanner.Planner.StoredGenepackCount>
+    <XenogermPlanner.Planner.GenepackNonArchiteGenes>Non-archite genes</XenogermPlanner.Planner.GenepackNonArchiteGenes>
+    <XenogermPlanner.Planner.GenepackArchiteGenes>Archite genes</XenogermPlanner.Planner.GenepackArchiteGenes>
+    <XenogermPlanner.Planner.ExactCompatible>This genepack can be used when producing the exact gene set.</XenogermPlanner.Planner.ExactCompatible>
+    <XenogermPlanner.Planner.ExactIncompatible>This genepack contains extra genes that are not in the plan.</XenogermPlanner.Planner.ExactIncompatible>
+    <XenogermPlanner.Planner.ReadinessNoActiveMap>Open a colony map to check gene availability.</XenogermPlanner.Planner.ReadinessNoActiveMap>
+    <XenogermPlanner.Planner.ReadinessEmptyTarget>Add at least one gene to this plan.</XenogermPlanner.Planner.ReadinessEmptyTarget>
+    <XenogermPlanner.Planner.ReadinessExactPayloadConflict>The exact gene set cannot be produced without extra genes.</XenogermPlanner.Planner.ReadinessExactPayloadConflict>
+    <XenogermPlanner.Planner.DegradedWarning>Some genes in this plan are not available with the current mods. Edit the plan to remove or replace them.</XenogermPlanner.Planner.DegradedWarning>
+
+    <XenogermPlanner.PotentialDonors.Title>Potential donors for {0}</XenogermPlanner.PotentialDonors.Title>
+    <XenogermPlanner.PotentialDonors.Description>These pawns may provide this gene through gene extraction. A specific extraction can produce different genes.</XenogermPlanner.PotentialDonors.Description>
+    <XenogermPlanner.PotentialDonors.Empty>No potential donors for this gene are present on the current map.</XenogermPlanner.PotentialDonors.Empty>
+    <XenogermPlanner.PotentialDonors.Unavailable>Open a colony map to view potential donors.</XenogermPlanner.PotentialDonors.Unavailable>
+    <XenogermPlanner.PotentialDonors.UnnamedPawn>Unnamed pawn</XenogermPlanner.PotentialDonors.UnnamedPawn>
+
+    <XenogermPlanner.Planner.DeletePlanConfirmation>Delete plan "{0}"?</XenogermPlanner.Planner.DeletePlanConfirmation>
+    <XenogermPlanner.Planner.DeletePlanWarning>This action cannot be undone.</XenogermPlanner.Planner.DeletePlanWarning>
+
+    <XenogermPlanner.GeneDiagnostics.Title>Gene effects and requirements</XenogermPlanner.GeneDiagnostics.Title>
+    <XenogermPlanner.GeneDiagnostics.Conflict.OrdinaryWinner>{0} will affect the pawn; {1} will not. Both genes will still be included in the xenogerm.</XenogermPlanner.GeneDiagnostics.Conflict.OrdinaryWinner>
+    <XenogermPlanner.GeneDiagnostics.Conflict.Ordinary>{0} and {1} interfere with each other. One of them may not affect the pawn, but both will still be included in the xenogerm.</XenogermPlanner.GeneDiagnostics.Conflict.Ordinary>
+    <XenogermPlanner.GeneDiagnostics.Conflict.RandomChosen>Only one of {0} and {1} will affect the pawn, chosen at random when the xenogerm is implanted. Both genes will still be included in the xenogerm.</XenogermPlanner.GeneDiagnostics.Conflict.RandomChosen>
+    <XenogermPlanner.GeneDiagnostics.Conflict.RandomChosenGroup>Only one gene from this group will affect the pawn, chosen at random when the xenogerm is implanted. All genes in the group will still be included in the xenogerm.</XenogermPlanner.GeneDiagnostics.Conflict.RandomChosenGroup>
+    <XenogermPlanner.GeneDiagnostics.Conflict.Mixed>{0} and {1} may interact unpredictably. One may block the other, or both may affect the pawn. Both genes will still be included in the xenogerm.</XenogermPlanner.GeneDiagnostics.Conflict.Mixed>
+    <XenogermPlanner.GeneDiagnostics.Conflict.Unknown>{0} and {1} interfere with each other. The final effect is uncertain, but both genes will still be included in the xenogerm.</XenogermPlanner.GeneDiagnostics.Conflict.Unknown>
+    <XenogermPlanner.GeneDiagnostics.Prerequisite.MissingCoverage>{0} needs {1}. The plan can be assembled only if the selected genepacks also provide {1}.</XenogermPlanner.GeneDiagnostics.Prerequisite.MissingCoverage>
+    <XenogermPlanner.GeneDiagnostics.Prerequisite.MissingExactPayload>{0} needs {1}. Add {1} to the plan, or the Gene Assembler will refuse this exact gene set.</XenogermPlanner.GeneDiagnostics.Prerequisite.MissingExactPayload>
+    <XenogermPlanner.GeneDiagnostics.Prerequisite.Unknown>{0} cannot be assembled without {1}.</XenogermPlanner.GeneDiagnostics.Prerequisite.Unknown>
+    <XenogermPlanner.GeneDiagnostics.Prerequisite.Relation>{0} → {1}</XenogermPlanner.GeneDiagnostics.Prerequisite.Relation>
+    <XenogermPlanner.Planner.Tab.Overview>Overview</XenogermPlanner.Planner.Tab.Overview>
+    <XenogermPlanner.Planner.Tab.Assembler>Gene Assembler</XenogermPlanner.Planner.Tab.Assembler>
+    <XenogermPlanner.Planner.Tab.GeneEffects>Gene effects ({0})</XenogermPlanner.Planner.Tab.GeneEffects>
+    <XenogermPlanner.GeneDiagnostics.Empty>No conflicting gene effects or missing requirements.</XenogermPlanner.GeneDiagnostics.Empty>
+
+    <XenogermPlanner.PlanEditor.CreateTitle>Create xenogerm plan</XenogermPlanner.PlanEditor.CreateTitle>
+    <XenogermPlanner.PlanEditor.EditTitle>Edit xenogerm plan</XenogermPlanner.PlanEditor.EditTitle>
+    <XenogermPlanner.PlanEditor.Name>Name</XenogermPlanner.PlanEditor.Name>
+    <XenogermPlanner.PlanEditor.ReadinessMode>Goal</XenogermPlanner.PlanEditor.ReadinessMode>
+    <XenogermPlanner.PlanEditor.GeneCatalog>Gene catalog</XenogermPlanner.PlanEditor.GeneCatalog>
+    <XenogermPlanner.PlanEditor.Search>Search</XenogermPlanner.PlanEditor.Search>
+    <XenogermPlanner.PlanEditor.SelectedGenes>Selected genes</XenogermPlanner.PlanEditor.SelectedGenes>
+    <XenogermPlanner.PlanEditor.SelectedGeneCount>Selected: {0}</XenogermPlanner.PlanEditor.SelectedGeneCount>
+    <XenogermPlanner.PlanEditor.NoGenes>No genes selected.</XenogermPlanner.PlanEditor.NoGenes>
+    <XenogermPlanner.PlanEditor.NoSearchResults>No genes match the current search.</XenogermPlanner.PlanEditor.NoSearchResults>
+    <XenogermPlanner.PlanEditor.AddAllFiltered>Add all filtered</XenogermPlanner.PlanEditor.AddAllFiltered>
+    <XenogermPlanner.PlanEditor.ClearSelectedGenes>Clear selected genes</XenogermPlanner.PlanEditor.ClearSelectedGenes>
+    <XenogermPlanner.PlanEditor.ExpandAllCategories>Expand all categories</XenogermPlanner.PlanEditor.ExpandAllCategories>
+    <XenogermPlanner.PlanEditor.CollapseAllCategories>Collapse all categories</XenogermPlanner.PlanEditor.CollapseAllCategories>
+    <XenogermPlanner.PlanEditor.Create>Create</XenogermPlanner.PlanEditor.Create>
+    <XenogermPlanner.PlanEditor.Save>Save</XenogermPlanner.PlanEditor.Save>
+    <XenogermPlanner.PlanEditor.Cancel>Cancel</XenogermPlanner.PlanEditor.Cancel>
+    <XenogermPlanner.PlanEditor.InvalidName>Enter a non-empty plan name.</XenogermPlanner.PlanEditor.InvalidName>
+    <XenogermPlanner.PlanEditor.NameConflict>A plan named "{0}" already exists.</XenogermPlanner.PlanEditor.NameConflict>
+
+    <XenogermPlanner.PlanEditor.Biostats.ComplexityTooltip>Complexity of the selected genes after RimWorld applies gene interactions and overrides.</XenogermPlanner.PlanEditor.Biostats.ComplexityTooltip>
+    <XenogermPlanner.PlanEditor.Biostats.MetabolicEfficiencyTooltip>Metabolic efficiency of the selected genes after RimWorld applies gene interactions and overrides. Hunger rate uses RimWorld's standard metabolism conversion.</XenogermPlanner.PlanEditor.Biostats.MetabolicEfficiencyTooltip>
+    <XenogermPlanner.PlanEditor.Biostats.ArchiteCapsulesTooltip>Archite capsules required by the selected genes after RimWorld applies gene interactions and overrides.</XenogermPlanner.PlanEditor.Biostats.ArchiteCapsulesTooltip>
+    <XenogermPlanner.PlanEditor.Biostats.PartialSuffix>partial</XenogermPlanner.PlanEditor.Biostats.PartialSuffix>
+    <XenogermPlanner.PlanEditor.Biostats.PartialTooltip>Unavailable genes are not included in these values. Change the selected genes to calculate complete values for the plan that will be saved.</XenogermPlanner.PlanEditor.Biostats.PartialTooltip>
+
+    <XenogermPlanner.PlanEditor.DegradedTargetWarning>Some genes in this plan are not available with the current mods. Changing the selected genes will remove those unavailable genes from the plan.</XenogermPlanner.PlanEditor.DegradedTargetWarning>
+    <XenogermPlanner.PlanEditor.DegradedTargetChangeConfirmation>Changing the selected genes will permanently remove unavailable genes from this plan. Continue?</XenogermPlanner.PlanEditor.DegradedTargetChangeConfirmation>
+
+    <XenogermPlanner.PlanImport.Title>Import custom xenogerm</XenogermPlanner.PlanImport.Title>
+    <XenogermPlanner.PlanImport.SourcesTitle>Custom xenogerms</XenogermPlanner.PlanImport.SourcesTitle>
+    <XenogermPlanner.PlanImport.PreviewTitle>Import preview</XenogermPlanner.PlanImport.PreviewTitle>
+    <XenogermPlanner.PlanImport.EmptySources>No custom xenogerms are available to import.</XenogermPlanner.PlanImport.EmptySources>
+    <XenogermPlanner.PlanImport.NoSelectedSource>Select a custom xenogerm to preview its genes.</XenogermPlanner.PlanImport.NoSelectedSource>
+    <XenogermPlanner.PlanImport.UnnamedSource>Unnamed custom xenogerm</XenogermPlanner.PlanImport.UnnamedSource>
+    <XenogermPlanner.PlanImport.InvalidSourceMarker>Cannot import</XenogermPlanner.PlanImport.InvalidSourceMarker>
+    <XenogermPlanner.PlanImport.InvalidSource>This custom xenogerm contains invalid or missing gene data and cannot be imported.</XenogermPlanner.PlanImport.InvalidSource>
+    <XenogermPlanner.PlanImport.EmptySource>This custom xenogerm contains no genes that can be imported.</XenogermPlanner.PlanImport.EmptySource>
+    <XenogermPlanner.PlanImport.SourceUnavailable>The selected custom xenogerm is no longer available. The list has been refreshed.</XenogermPlanner.PlanImport.SourceUnavailable>
+    <XenogermPlanner.PlanImport.ReadinessMode>Goal</XenogermPlanner.PlanImport.ReadinessMode>
+    <XenogermPlanner.PlanImport.Import>Import</XenogermPlanner.PlanImport.Import>
+    <XenogermPlanner.PlanImport.Cancel>Cancel</XenogermPlanner.PlanImport.Cancel>
+
+    <XenogermPlanner.ReadinessMode.Coverage>All planned genes</XenogermPlanner.ReadinessMode.Coverage>
+    <XenogermPlanner.ReadinessMode.CoverageDescription>Ready when every planned gene is available.&#10;&#10;Genepacks may also contain extra genes.</XenogermPlanner.ReadinessMode.CoverageDescription>
+    <XenogermPlanner.ReadinessMode.ExactPayload>Exact gene set</XenogermPlanner.ReadinessMode.ExactPayload>
+    <XenogermPlanner.ReadinessMode.ExactPayloadDescription>Ready when available genepacks can produce exactly the planned genes.&#10;&#10;Genepacks containing extra genes cannot be used.</XenogermPlanner.ReadinessMode.ExactPayloadDescription>
+    <XenogermPlanner.ReadinessMode.Unknown>Unknown</XenogermPlanner.ReadinessMode.Unknown>
+    <XenogermPlanner.ReadinessMode.UnknownDescription>This plan uses a goal that this version of Xenogerm Planner cannot check.</XenogermPlanner.ReadinessMode.UnknownDescription>
+
+    <XenogermPlanner.ReadinessStatus.Ready>Ready</XenogermPlanner.ReadinessStatus.Ready>
+    <XenogermPlanner.ReadinessStatus.NotReady>Not ready</XenogermPlanner.ReadinessStatus.NotReady>
+    <XenogermPlanner.ReadinessStatus.EmptyTarget>No genes planned</XenogermPlanner.ReadinessStatus.EmptyTarget>
+    <XenogermPlanner.ReadinessStatus.Degraded>Unavailable genes</XenogermPlanner.ReadinessStatus.Degraded>
+    <XenogermPlanner.ReadinessStatus.Unavailable>Cannot check</XenogermPlanner.ReadinessStatus.Unavailable>
+    <XenogermPlanner.ReadinessStatus.Unknown>Unknown</XenogermPlanner.ReadinessStatus.Unknown>
+
+    <XenogermPlanner.GeneCoverageState.Covered>Available</XenogermPlanner.GeneCoverageState.Covered>
+    <XenogermPlanner.GeneCoverageState.ExactPayloadConflict>Extra genes</XenogermPlanner.GeneCoverageState.ExactPayloadConflict>
+    <XenogermPlanner.GeneCoverageState.Missing>Missing</XenogermPlanner.GeneCoverageState.Missing>
+    <XenogermPlanner.GeneCoverageState.Unavailable>Unavailable</XenogermPlanner.GeneCoverageState.Unavailable>
+    <XenogermPlanner.GeneCoverageState.AvailableTooltip>At least one genepack on the current map provides this gene for the selected goal.</XenogermPlanner.GeneCoverageState.AvailableTooltip>
+    <XenogermPlanner.GeneCoverageState.ExactPayloadConflictTooltip>This gene is available, but every genepack that contains it also adds genes outside the exact gene set.</XenogermPlanner.GeneCoverageState.ExactPayloadConflictTooltip>
+    <XenogermPlanner.GeneCoverageState.MissingTooltip>No genepack on the current map contains this gene.</XenogermPlanner.GeneCoverageState.MissingTooltip>
+
+    <XenogermPlanner.Template.Create>Create xenogerm template</XenogermPlanner.Template.Create>
+    <XenogermPlanner.Template.CreateDescription>Create a xenogerm template from this ready plan and save it in the current game.</XenogermPlanner.Template.CreateDescription>
+    <XenogermPlanner.Template.Disabled.DataUnavailable>Information needed to create a template is unavailable.</XenogermPlanner.Template.Disabled.DataUnavailable>
+    <XenogermPlanner.Template.Disabled.NoActiveMap>Open a colony map before creating a xenogerm template.</XenogermPlanner.Template.Disabled.NoActiveMap>
+    <XenogermPlanner.Template.Disabled.EmptyTarget>Add at least one gene to this plan before creating a template.</XenogermPlanner.Template.Disabled.EmptyTarget>
+    <XenogermPlanner.Template.Disabled.Degraded>Resolve unavailable genes in this plan before creating a template.</XenogermPlanner.Template.Disabled.Degraded>
+    <XenogermPlanner.Template.Disabled.NotReady>The genepacks on the current map do not provide all genes in this plan.</XenogermPlanner.Template.Disabled.NotReady>
+    <XenogermPlanner.Template.Disabled.ExactPayloadConflict>The genepacks on the current map cannot produce this exact gene set without extra genes.</XenogermPlanner.Template.Disabled.ExactPayloadConflict>
+    <XenogermPlanner.Template.Title>Create xenogerm template</XenogermPlanner.Template.Title>
+    <XenogermPlanner.Template.Generation.Title>Creating xenogerm template</XenogermPlanner.Template.Generation.Title>
+    <XenogermPlanner.Template.Generation.InProgress>Searching for suitable genepack combinations</XenogermPlanner.Template.Generation.InProgress>
+    <XenogermPlanner.Template.Name>Name</XenogermPlanner.Template.Name>
+    <XenogermPlanner.Template.Icon>Icon</XenogermPlanner.Template.Icon>
+    <XenogermPlanner.Template.Mode.Automatic>Automatic</XenogermPlanner.Template.Mode.Automatic>
+    <XenogermPlanner.Template.Mode.AutomaticDescription>Use the best valid genepack combination found by Xenogerm Planner.</XenogermPlanner.Template.Mode.AutomaticDescription>
+    <XenogermPlanner.Template.Mode.AutomaticDescriptionLimited>Use the best valid combination found. The search was limited for performance, so other valid combinations may exist.</XenogermPlanner.Template.Mode.AutomaticDescriptionLimited>
+    <XenogermPlanner.Template.Mode.Customize>Choose alternative</XenogermPlanner.Template.Mode.Customize>
+    <XenogermPlanner.Template.Mode.CustomizeDescription>Preview and select another valid genepack combination.</XenogermPlanner.Template.Mode.CustomizeDescription>
+    <XenogermPlanner.Template.Preview>Template preview</XenogermPlanner.Template.Preview>
+    <XenogermPlanner.Template.PlanMode>Plan goal: {0}</XenogermPlanner.Template.PlanMode>
+    <XenogermPlanner.Template.Alternatives>Valid combinations</XenogermPlanner.Template.Alternatives>
+    <XenogermPlanner.Template.NoAlternatives>No alternative genepack combinations are available.</XenogermPlanner.Template.NoAlternatives>
+    <XenogermPlanner.Template.NoDisplayedAlternativesLimited>No additional combination was found. The search was limited for performance, so other valid combinations may exist.</XenogermPlanner.Template.NoDisplayedAlternativesLimited>
+    <XenogermPlanner.Template.SearchLimitedWarning>There are too many valid combinations to check them all without slowing the game. Only a limited set is shown, and other valid combinations may exist.</XenogermPlanner.Template.SearchLimitedWarning>
+    <XenogermPlanner.Template.AutomaticCandidate>Automatic choice</XenogermPlanner.Template.AutomaticCandidate>
+    <XenogermPlanner.Template.AlternativeCandidate>Alternative {0}</XenogermPlanner.Template.AlternativeCandidate>
+    <XenogermPlanner.Template.CandidateSummary>Gene sets: {0} · Extra genes: {1} · Genes listed: {2}</XenogermPlanner.Template.CandidateSummary>
+    <XenogermPlanner.Template.GeneSetHeader>Gene set {0} · Matching genepacks: {1}</XenogermPlanner.Template.GeneSetHeader>
+    <XenogermPlanner.Template.AdditionalGene>Extra</XenogermPlanner.Template.AdditionalGene>
+    <XenogermPlanner.Template.AdditionalGeneCount>Extra genes: {0}</XenogermPlanner.Template.AdditionalGeneCount>
+    <XenogermPlanner.Template.AdditionalGenesNone>Extra genes: none</XenogermPlanner.Template.AdditionalGenesNone>
+    <XenogermPlanner.Template.Biostats.Complexity>Complexity</XenogermPlanner.Template.Biostats.Complexity>
+    <XenogermPlanner.Template.Biostats.MetabolicEfficiency>Metabolic efficiency</XenogermPlanner.Template.Biostats.MetabolicEfficiency>
+    <XenogermPlanner.Template.Biostats.ArchiteCapsules>Archite capsules</XenogermPlanner.Template.Biostats.ArchiteCapsules>
+    <XenogermPlanner.Template.Biostats.ComplexityTooltip>Genetic complexity of the complete template after all gene sets are combined.</XenogermPlanner.Template.Biostats.ComplexityTooltip>
+    <XenogermPlanner.Template.Biostats.MetabolicEfficiencyTooltip>Metabolic efficiency of the complete template. Positive values improve metabolism; negative values reduce it.</XenogermPlanner.Template.Biostats.MetabolicEfficiencyTooltip>
+    <XenogermPlanner.Template.Biostats.ArchiteCapsulesTooltip>Archite capsules required by the complete template.</XenogermPlanner.Template.Biostats.ArchiteCapsulesTooltip>
+    <XenogermPlanner.Template.Biostats.GeneSetTooltip>This value describes this gene set only. The complete template may have different totals after all gene sets are combined.</XenogermPlanner.Template.Biostats.GeneSetTooltip>
+    <XenogermPlanner.Template.NoCandidate>No valid genepack combination is available. Rescan genepacks on the current map and try again.</XenogermPlanner.Template.NoCandidate>
+    <XenogermPlanner.Template.Save>Save template</XenogermPlanner.Template.Save>
+    <XenogermPlanner.Template.Cancel>Cancel</XenogermPlanner.Template.Cancel>
+    <XenogermPlanner.Template.SaveFailure.InventoryUnavailable>Genepack information for the current map is unavailable.</XenogermPlanner.Template.SaveFailure.InventoryUnavailable>
+    <XenogermPlanner.Template.SaveFailure.CandidateInvalidForPlan>The selected genepack combination no longer matches the plan.</XenogermPlanner.Template.SaveFailure.CandidateInvalidForPlan>
+    <XenogermPlanner.Template.SaveFailure.CompositionUnavailable>One or more selected gene sets are no longer available on the current map. Reopen the preview to choose an updated combination.</XenogermPlanner.Template.SaveFailure.CompositionUnavailable>
+    <XenogermPlanner.Template.SaveFailure.VanillaRejected>RimWorld could not create this xenogerm template.</XenogermPlanner.Template.SaveFailure.VanillaRejected>
+    <XenogermPlanner.Template.SaveFailure.Unknown>The xenogerm template could not be saved.</XenogermPlanner.Template.SaveFailure.Unknown>
+</LanguageData>

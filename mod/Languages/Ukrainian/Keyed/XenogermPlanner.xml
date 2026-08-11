@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <XenogermPlanner.Planner.PlansTitle>Плани</XenogermPlanner.Planner.PlansTitle>
+    <XenogermPlanner.Planner.DetailsTitle>Відомості про план «{0}»</XenogermPlanner.Planner.DetailsTitle>
+    <XenogermPlanner.Planner.EmptyDetailsTitle>Відомості про план</XenogermPlanner.Planner.EmptyDetailsTitle>
+    <XenogermPlanner.Planner.CreatePlan>Створити</XenogermPlanner.Planner.CreatePlan>
+    <XenogermPlanner.Planner.ImportPlan>Імпортувати збережений ксенозародок</XenogermPlanner.Planner.ImportPlan>
+    <XenogermPlanner.Planner.RefreshDescription>Повторно перевірити генопаки на поточній мапі й оновити стан плану.</XenogermPlanner.Planner.RefreshDescription>
+    <XenogermPlanner.Planner.Locate>Знайти</XenogermPlanner.Planner.Locate>
+    <XenogermPlanner.Planner.TargetNavigationHint>Наведіть курсор, щоб підсвітити ціль на мапі. Натисніть, щоб перейти до неї.</XenogermPlanner.Planner.TargetNavigationHint>
+    <XenogermPlanner.Planner.OpenInfoCard>Відкрити відомості</XenogermPlanner.Planner.OpenInfoCard>
+    <XenogermPlanner.Planner.OpenInfoCardHint>Натисніть правою кнопкою миші, щоб відкрити відомості.</XenogermPlanner.Planner.OpenInfoCardHint>
+    <XenogermPlanner.Planner.PastePlan>Вставити</XenogermPlanner.Planner.PastePlan>
+    <XenogermPlanner.Planner.DuplicatePlan>Дублювати</XenogermPlanner.Planner.DuplicatePlan>
+    <XenogermPlanner.Planner.DuplicatePlanName>{0} — копія</XenogermPlanner.Planner.DuplicatePlanName>
+    <XenogermPlanner.Planner.CopyPlan>Копіювати</XenogermPlanner.Planner.CopyPlan>
+    <XenogermPlanner.Planner.EditPlan>Змінити</XenogermPlanner.Planner.EditPlan>
+    <XenogermPlanner.Planner.DeletePlan>Видалити</XenogermPlanner.Planner.DeletePlan>
+    <XenogermPlanner.Planner.PlanCopied>План скопійовано до буфера обміну.</XenogermPlanner.Planner.PlanCopied>
+    <XenogermPlanner.Planner.InvalidClipboardPlan>Буфер обміну не містить припустимого плану ксенозародка.</XenogermPlanner.Planner.InvalidClipboardPlan>
+    <XenogermPlanner.Planner.UnsupportedClipboardPlanVersion>План із буфера обміну створено у версії, яку ця версія Xenogerm Planner не може прочитати.</XenogermPlanner.Planner.UnsupportedClipboardPlanVersion>
+    <XenogermPlanner.Planner.PasteDegradedPlanConfirmation>Деякі гени в цьому плані з буфера обміну недоступні з поточним набором модів. Вставити план і зберегти в ньому ці недоступні гени?</XenogermPlanner.Planner.PasteDegradedPlanConfirmation>
+
+    <XenogermPlanner.Planner.SearchPlans>Пошук</XenogermPlanner.Planner.SearchPlans>
+    <XenogermPlanner.Planner.NoSearchResults>Немає планів, що відповідають умовам пошуку.</XenogermPlanner.Planner.NoSearchResults>
+    <XenogermPlanner.Planner.EmptyPlans>Планів ксенозародків ще немає.</XenogermPlanner.Planner.EmptyPlans>
+    <XenogermPlanner.Planner.NoSelectedPlan>Виберіть план, щоб переглянути відомості про нього.</XenogermPlanner.Planner.NoSelectedPlan>
+    <XenogermPlanner.Planner.DataUnavailable>Відомості про плани недоступні.</XenogermPlanner.Planner.DataUnavailable>
+    <XenogermPlanner.Planner.UnnamedPlan>Безіменний план</XenogermPlanner.Planner.UnnamedPlan>
+
+    <XenogermPlanner.Notifications.ReadinessEnabled>Сповістити, коли план буде готовий</XenogermPlanner.Notifications.ReadinessEnabled>
+    <XenogermPlanner.Notifications.ReadinessEnabledDescription>Показувати повідомлення, коли цей план стане готовим. Повторне повідомлення може з’явитися після того, як план знову стане неготовим, а потім буде завершений ще раз.</XenogermPlanner.Notifications.ReadinessEnabledDescription>
+    <XenogermPlanner.Notifications.PlanReady>План ксенозародка «{0}» готовий.</XenogermPlanner.Notifications.PlanReady>
+
+    <XenogermPlanner.Planner.DesiredGenes>Заплановані гени</XenogermPlanner.Planner.DesiredGenes>
+    <XenogermPlanner.Planner.DesiredGeneCount>Заплановані гени: {0}</XenogermPlanner.Planner.DesiredGeneCount>
+    <XenogermPlanner.Planner.SummaryMode>Мета: {0}</XenogermPlanner.Planner.SummaryMode>
+    <XenogermPlanner.Planner.SummaryReadiness>Стан: {0}</XenogermPlanner.Planner.SummaryReadiness>
+    <XenogermPlanner.Planner.SummaryGenes>Гени: заплановано — {0} · доступно — {1} · відсутнє — {2}</XenogermPlanner.Planner.SummaryGenes>
+    <XenogermPlanner.Planner.SummaryGenesDegraded>Гени: заплановано — {0} · доступно — {1} · відсутнє — {2} · недоступно — {3}</XenogermPlanner.Planner.SummaryGenesDegraded>
+
+    <XenogermPlanner.Planner.AssemblerScopeTitle>Збирач генів</XenogermPlanner.Planner.AssemblerScopeTitle>
+    <XenogermPlanner.Planner.AssemblerSelector>Збирач</XenogermPlanner.Planner.AssemblerSelector>
+    <XenogermPlanner.Planner.SelectAssembler>Виберіть Збирач генів...</XenogermPlanner.Planner.SelectAssembler>
+    <XenogermPlanner.Planner.ClearAssemblerSelection>Скинути вибір</XenogermPlanner.Planner.ClearAssemblerSelection>
+    <XenogermPlanner.Planner.AssemblerDisplayName>{0} ({1}, {2})</XenogermPlanner.Planner.AssemblerDisplayName>
+    <XenogermPlanner.Planner.NoAssemblers>На поточній мапі немає доступних збирачів генів.</XenogermPlanner.Planner.NoAssemblers>
+    <XenogermPlanner.Planner.NoSelectedAssembler>Виберіть Збирач генів, щоб перевірити, чи можна зібрати цей план із підключених генопаків за поточного стану обладнання.</XenogermPlanner.Planner.NoSelectedAssembler>
+    <XenogermPlanner.Planner.AssemblerReadiness>Стан: {0}</XenogermPlanner.Planner.AssemblerReadiness>
+    <XenogermPlanner.Planner.AssemblerGeneScope>Доступність генів: {0}</XenogermPlanner.Planner.AssemblerGeneScope>
+    <XenogermPlanner.Planner.AssemblerVisibleGenepacks>Підключені генопаки: {0}</XenogermPlanner.Planner.AssemblerVisibleGenepacks>
+    <XenogermPlanner.Planner.AssemblerScopeCovered>Доступно генів: {0}</XenogermPlanner.Planner.AssemblerScopeCovered>
+    <XenogermPlanner.Planner.AssemblerScopeMissing>Відсутнє генів: {0}</XenogermPlanner.Planner.AssemblerScopeMissing>
+    <XenogermPlanner.Planner.AssemblerScopeExactPayloadConflict>Цей збирач не може створити точний набір генів без додаткових генів.</XenogermPlanner.Planner.AssemblerScopeExactPayloadConflict>
+    <XenogermPlanner.Planner.AssemblerDetailsShow>Докладніше ▼</XenogermPlanner.Planner.AssemblerDetailsShow>
+    <XenogermPlanner.Planner.AssemblerDetailsHide>Сховати ▲</XenogermPlanner.Planner.AssemblerDetailsHide>
+    <XenogermPlanner.AssemblerReadinessStatus.Blocked>Заблоковано</XenogermPlanner.AssemblerReadinessStatus.Blocked>
+    <XenogermPlanner.AssemblerReadinessStatus.Unknown>Невідомо</XenogermPlanner.AssemblerReadinessStatus.Unknown>
+    <XenogermPlanner.AssemblerBlocker.MissingPrerequisite>Генопаки, потрібні для цього плану, не містять обов’язкових генів: {0}.</XenogermPlanner.AssemblerBlocker.MissingPrerequisite>
+    <XenogermPlanner.AssemblerBlocker.AssemblerUnpowered>Вибраний Збирач генів не отримує живлення.</XenogermPlanner.AssemblerBlocker.AssemblerUnpowered>
+    <XenogermPlanner.AssemblerBlocker.UsedGeneBankUnpowered>Банк генів, що містить один із потрібних генопаків, не отримує живлення.</XenogermPlanner.AssemblerBlocker.UsedGeneBankUnpowered>
+    <XenogermPlanner.AssemblerBlocker.InsufficientComplexity>Потрібна комплексність: {0}. Поточна межа: {1}.</XenogermPlanner.AssemblerBlocker.InsufficientComplexity>
+    <XenogermPlanner.AssemblerBlocker.ArchogeneticsResearchMissing>Для використання потрібних генопаків необхідне дослідження «Архогенетика».</XenogermPlanner.AssemblerBlocker.ArchogeneticsResearchMissing>
+    <XenogermPlanner.AssemblerBlocker.InsufficientArchiteCapsules>Потрібно архітних капсул: {0}. Доступно: {1}.</XenogermPlanner.AssemblerBlocker.InsufficientArchiteCapsules>
+    <XenogermPlanner.AssemblerBlocker.Unknown>Збирання заблоковано з невідомої причини.</XenogermPlanner.AssemblerBlocker.Unknown>
+
+    <XenogermPlanner.Planner.GeneCoverage>Доступність генів</XenogermPlanner.Planner.GeneCoverage>
+    <XenogermPlanner.Planner.GeneColumn>Ген</XenogermPlanner.Planner.GeneColumn>
+    <XenogermPlanner.Planner.StateColumn>Доступність</XenogermPlanner.Planner.StateColumn>
+    <XenogermPlanner.Planner.AvailableGenepacksColumn>Генопаки з цим геном</XenogermPlanner.Planner.AvailableGenepacksColumn>
+    <XenogermPlanner.Planner.PotentialDonorsColumn>Потенційні донори</XenogermPlanner.Planner.PotentialDonorsColumn>
+    <XenogermPlanner.Planner.PotentialDonorCountTooltip>Потенційні донори гена «{1}» на поточній мапі: {0}. Цей ген може бути вибрано під час екстракції генів, але конкретна екстракція може дати інші гени.</XenogermPlanner.Planner.PotentialDonorCountTooltip>
+    <XenogermPlanner.Planner.PotentialDonorsUnavailable>Відкрийте мапу колонії, щоб перевірити потенційних донорів.</XenogermPlanner.Planner.PotentialDonorsUnavailable>
+    <XenogermPlanner.Planner.NoResolvedGeneCoverage>Немає запланованих генів, доступних для перевірки.</XenogermPlanner.Planner.NoResolvedGeneCoverage>
+    <XenogermPlanner.Planner.NoSourceGenepacks>—</XenogermPlanner.Planner.NoSourceGenepacks>
+    <XenogermPlanner.Planner.GenepackTooltipTitle>Генопак</XenogermPlanner.Planner.GenepackTooltipTitle>
+    <XenogermPlanner.Planner.StoredGenepackCount>Відповідних генопаків показано: {0}</XenogermPlanner.Planner.StoredGenepackCount>
+    <XenogermPlanner.Planner.GenepackNonArchiteGenes>Неархітні гени</XenogermPlanner.Planner.GenepackNonArchiteGenes>
+    <XenogermPlanner.Planner.GenepackArchiteGenes>Архітні гени</XenogermPlanner.Planner.GenepackArchiteGenes>
+    <XenogermPlanner.Planner.ExactCompatible>Цей генопак можна використати для створення точного набору генів.</XenogermPlanner.Planner.ExactCompatible>
+    <XenogermPlanner.Planner.ExactIncompatible>Цей генопак містить додаткові гени, яких немає в плані.</XenogermPlanner.Planner.ExactIncompatible>
+    <XenogermPlanner.Planner.ReadinessNoActiveMap>Відкрийте мапу колонії, щоб перевірити доступність генів.</XenogermPlanner.Planner.ReadinessNoActiveMap>
+    <XenogermPlanner.Planner.ReadinessEmptyTarget>Додайте до плану принаймні один ген.</XenogermPlanner.Planner.ReadinessEmptyTarget>
+    <XenogermPlanner.Planner.ReadinessExactPayloadConflict>Точний набір генів неможливо створити без додаткових генів.</XenogermPlanner.Planner.ReadinessExactPayloadConflict>
+    <XenogermPlanner.Planner.DegradedWarning>Деякі гени в цьому плані недоступні з поточним набором модів. Змініть план, щоб видалити або замінити їх.</XenogermPlanner.Planner.DegradedWarning>
+
+    <XenogermPlanner.PotentialDonors.Title>Потенційні донори гена «{0}»</XenogermPlanner.PotentialDonors.Title>
+    <XenogermPlanner.PotentialDonors.Description>Ці персонажі можуть надати цей ген під час екстракції генів. Конкретна екстракція може дати інші гени.</XenogermPlanner.PotentialDonors.Description>
+    <XenogermPlanner.PotentialDonors.Empty>На поточній мапі немає потенційних донорів цього гена.</XenogermPlanner.PotentialDonors.Empty>
+    <XenogermPlanner.PotentialDonors.Unavailable>Відкрийте мапу колонії, щоб переглянути потенційних донорів.</XenogermPlanner.PotentialDonors.Unavailable>
+    <XenogermPlanner.PotentialDonors.UnnamedPawn>Безіменний персонаж</XenogermPlanner.PotentialDonors.UnnamedPawn>
+
+    <XenogermPlanner.Planner.DeletePlanConfirmation>Видалити план «{0}»?</XenogermPlanner.Planner.DeletePlanConfirmation>
+    <XenogermPlanner.Planner.DeletePlanWarning>Цю дію неможливо скасувати.</XenogermPlanner.Planner.DeletePlanWarning>
+
+    <XenogermPlanner.GeneDiagnostics.Title>Ефекти й вимоги генів</XenogermPlanner.GeneDiagnostics.Title>
+    <XenogermPlanner.GeneDiagnostics.Conflict.OrdinaryWinner>Ген «{0}» впливатиме на персонажа, а «{1}» — ні. Обидва гени все одно ввійдуть до ксенозародка.</XenogermPlanner.GeneDiagnostics.Conflict.OrdinaryWinner>
+    <XenogermPlanner.GeneDiagnostics.Conflict.Ordinary>Гени «{0}» і «{1}» конфліктують. Один із них може не впливати на персонажа, але обидва все одно ввійдуть до ксенозародка.</XenogermPlanner.GeneDiagnostics.Conflict.Ordinary>
+    <XenogermPlanner.GeneDiagnostics.Conflict.RandomChosen>На персонажа впливатиме лише один із генів «{0}» і «{1}», випадково вибраний під час імплантації ксенозародка. Обидва гени все одно ввійдуть до ксенозародка.</XenogermPlanner.GeneDiagnostics.Conflict.RandomChosen>
+    <XenogermPlanner.GeneDiagnostics.Conflict.RandomChosenGroup>На персонажа впливатиме лише один ген із цієї групи, випадково вибраний під час імплантації ксенозародка. Усі гени групи все одно ввійдуть до ксенозародка.</XenogermPlanner.GeneDiagnostics.Conflict.RandomChosenGroup>
+    <XenogermPlanner.GeneDiagnostics.Conflict.Mixed>Гени «{0}» і «{1}» можуть взаємодіяти непередбачувано. Один із них може пригнічувати інший або обидва можуть впливати на персонажа. Обидва гени все одно ввійдуть до ксенозародка.</XenogermPlanner.GeneDiagnostics.Conflict.Mixed>
+    <XenogermPlanner.GeneDiagnostics.Conflict.Unknown>Гени «{0}» і «{1}» конфліктують. Кінцевий ефект невідомий, але обидва гени все одно ввійдуть до ксенозародка.</XenogermPlanner.GeneDiagnostics.Conflict.Unknown>
+    <XenogermPlanner.GeneDiagnostics.Prerequisite.MissingCoverage>Для гена «{0}» потрібен ген «{1}». План можна зібрати, лише якщо вибрані генопаки також містять «{1}».</XenogermPlanner.GeneDiagnostics.Prerequisite.MissingCoverage>
+    <XenogermPlanner.GeneDiagnostics.Prerequisite.MissingExactPayload>Для гена «{0}» потрібен ген «{1}». Додайте «{1}» до плану, інакше Збирач генів відхилить цей точний набір генів.</XenogermPlanner.GeneDiagnostics.Prerequisite.MissingExactPayload>
+    <XenogermPlanner.GeneDiagnostics.Prerequisite.Unknown>Ген «{0}» неможливо зібрати без «{1}».</XenogermPlanner.GeneDiagnostics.Prerequisite.Unknown>
+    <XenogermPlanner.GeneDiagnostics.Prerequisite.Relation>{0} → {1}</XenogermPlanner.GeneDiagnostics.Prerequisite.Relation>
+    <XenogermPlanner.Planner.Tab.Overview>Огляд</XenogermPlanner.Planner.Tab.Overview>
+    <XenogermPlanner.Planner.Tab.Assembler>Збирач генів</XenogermPlanner.Planner.Tab.Assembler>
+    <XenogermPlanner.Planner.Tab.GeneEffects>Ефекти генів ({0})</XenogermPlanner.Planner.Tab.GeneEffects>
+    <XenogermPlanner.GeneDiagnostics.Empty>Немає конфліктних ефектів генів або відсутніх вимог.</XenogermPlanner.GeneDiagnostics.Empty>
+
+    <XenogermPlanner.PlanEditor.CreateTitle>Створення плану ксенозародка</XenogermPlanner.PlanEditor.CreateTitle>
+    <XenogermPlanner.PlanEditor.EditTitle>Змінення плану ксенозародка</XenogermPlanner.PlanEditor.EditTitle>
+    <XenogermPlanner.PlanEditor.Name>Назва</XenogermPlanner.PlanEditor.Name>
+    <XenogermPlanner.PlanEditor.ReadinessMode>Мета</XenogermPlanner.PlanEditor.ReadinessMode>
+    <XenogermPlanner.PlanEditor.GeneCatalog>Каталог генів</XenogermPlanner.PlanEditor.GeneCatalog>
+    <XenogermPlanner.PlanEditor.Search>Пошук</XenogermPlanner.PlanEditor.Search>
+    <XenogermPlanner.PlanEditor.SelectedGenes>Вибрані гени</XenogermPlanner.PlanEditor.SelectedGenes>
+    <XenogermPlanner.PlanEditor.SelectedGeneCount>Вибрано: {0}</XenogermPlanner.PlanEditor.SelectedGeneCount>
+    <XenogermPlanner.PlanEditor.NoGenes>Гени не вибрано.</XenogermPlanner.PlanEditor.NoGenes>
+    <XenogermPlanner.PlanEditor.NoSearchResults>Немає генів, що відповідають умовам пошуку.</XenogermPlanner.PlanEditor.NoSearchResults>
+    <XenogermPlanner.PlanEditor.AddAllFiltered>Додати всі відфільтровані гени</XenogermPlanner.PlanEditor.AddAllFiltered>
+    <XenogermPlanner.PlanEditor.ClearSelectedGenes>Очистити вибрані гени</XenogermPlanner.PlanEditor.ClearSelectedGenes>
+    <XenogermPlanner.PlanEditor.ExpandAllCategories>Розгорнути всі категорії</XenogermPlanner.PlanEditor.ExpandAllCategories>
+    <XenogermPlanner.PlanEditor.CollapseAllCategories>Згорнути всі категорії</XenogermPlanner.PlanEditor.CollapseAllCategories>
+    <XenogermPlanner.PlanEditor.Create>Створити</XenogermPlanner.PlanEditor.Create>
+    <XenogermPlanner.PlanEditor.Save>Зберегти</XenogermPlanner.PlanEditor.Save>
+    <XenogermPlanner.PlanEditor.Cancel>Скасувати</XenogermPlanner.PlanEditor.Cancel>
+    <XenogermPlanner.PlanEditor.InvalidName>Введіть непорожню назву плану.</XenogermPlanner.PlanEditor.InvalidName>
+    <XenogermPlanner.PlanEditor.NameConflict>План із назвою «{0}» уже існує.</XenogermPlanner.PlanEditor.NameConflict>
+
+    <XenogermPlanner.PlanEditor.Biostats.ComplexityTooltip>Комплексність вибраних генів після того, як RimWorld застосує взаємодії та перекриття генів.</XenogermPlanner.PlanEditor.Biostats.ComplexityTooltip>
+    <XenogermPlanner.PlanEditor.Biostats.MetabolicEfficiencyTooltip>Ефективність метаболізму вибраних генів після того, як RimWorld застосує взаємодії та перекриття генів. Швидкість голоду розраховується за стандартними правилами перетворення метаболізму RimWorld.</XenogermPlanner.PlanEditor.Biostats.MetabolicEfficiencyTooltip>
+    <XenogermPlanner.PlanEditor.Biostats.ArchiteCapsulesTooltip>Кількість архітних капсул, потрібна для вибраних генів після того, як RimWorld застосує взаємодії та перекриття генів.</XenogermPlanner.PlanEditor.Biostats.ArchiteCapsulesTooltip>
+    <XenogermPlanner.PlanEditor.Biostats.PartialSuffix>частково</XenogermPlanner.PlanEditor.Biostats.PartialSuffix>
+    <XenogermPlanner.PlanEditor.Biostats.PartialTooltip>Недоступні гени не враховано в цих показниках. Змініть вибрані гени, щоб розрахувати повні показники плану, який буде збережено.</XenogermPlanner.PlanEditor.Biostats.PartialTooltip>
+
+    <XenogermPlanner.PlanEditor.DegradedTargetWarning>Деякі гени в цьому плані недоступні з поточним набором модів. Змінення вибраних генів видалить недоступні гени з плану.</XenogermPlanner.PlanEditor.DegradedTargetWarning>
+    <XenogermPlanner.PlanEditor.DegradedTargetChangeConfirmation>Змінення вибраних генів назавжди видалить недоступні гени з цього плану. Продовжити?</XenogermPlanner.PlanEditor.DegradedTargetChangeConfirmation>
+
+    <XenogermPlanner.PlanImport.Title>Імпорт збереженого ксенозародка</XenogermPlanner.PlanImport.Title>
+    <XenogermPlanner.PlanImport.SourcesTitle>Збережені ксенозародки</XenogermPlanner.PlanImport.SourcesTitle>
+    <XenogermPlanner.PlanImport.PreviewTitle>Попередній перегляд імпорту</XenogermPlanner.PlanImport.PreviewTitle>
+    <XenogermPlanner.PlanImport.EmptySources>Немає збережених ксенозародків, доступних для імпорту.</XenogermPlanner.PlanImport.EmptySources>
+    <XenogermPlanner.PlanImport.NoSelectedSource>Виберіть збережений ксенозародок, щоб переглянути його гени.</XenogermPlanner.PlanImport.NoSelectedSource>
+    <XenogermPlanner.PlanImport.UnnamedSource>Безіменний ксенозародок</XenogermPlanner.PlanImport.UnnamedSource>
+    <XenogermPlanner.PlanImport.InvalidSourceMarker>Неможливо імпортувати</XenogermPlanner.PlanImport.InvalidSourceMarker>
+    <XenogermPlanner.PlanImport.InvalidSource>Цей ксенозародок містить неприпустимі або відсутні дані генів і не може бути імпортований.</XenogermPlanner.PlanImport.InvalidSource>
+    <XenogermPlanner.PlanImport.EmptySource>Цей ксенозародок не містить генів, доступних для імпорту.</XenogermPlanner.PlanImport.EmptySource>
+    <XenogermPlanner.PlanImport.SourceUnavailable>Вибраний ксенозародок більше недоступний. Список оновлено.</XenogermPlanner.PlanImport.SourceUnavailable>
+    <XenogermPlanner.PlanImport.ReadinessMode>Мета</XenogermPlanner.PlanImport.ReadinessMode>
+    <XenogermPlanner.PlanImport.Import>Імпортувати</XenogermPlanner.PlanImport.Import>
+    <XenogermPlanner.PlanImport.Cancel>Скасувати</XenogermPlanner.PlanImport.Cancel>
+
+    <XenogermPlanner.ReadinessMode.Coverage>Усі заплановані гени</XenogermPlanner.ReadinessMode.Coverage>
+    <XenogermPlanner.ReadinessMode.CoverageDescription>План готовий, коли доступний кожен запланований ген.&#10;&#10;Генопаки можуть також містити додаткові гени.</XenogermPlanner.ReadinessMode.CoverageDescription>
+    <XenogermPlanner.ReadinessMode.ExactPayload>Точний набір генів</XenogermPlanner.ReadinessMode.ExactPayload>
+    <XenogermPlanner.ReadinessMode.ExactPayloadDescription>План готовий, коли доступні генопаки дають змогу створити лише заплановані гени.&#10;&#10;Генопаки з додатковими генами використовувати не можна.</XenogermPlanner.ReadinessMode.ExactPayloadDescription>
+    <XenogermPlanner.ReadinessMode.Unknown>Невідомо</XenogermPlanner.ReadinessMode.Unknown>
+    <XenogermPlanner.ReadinessMode.UnknownDescription>У цьому плані використовується мета, яку ця версія Xenogerm Planner не може перевірити.</XenogermPlanner.ReadinessMode.UnknownDescription>
+
+    <XenogermPlanner.ReadinessStatus.Ready>Готовий</XenogermPlanner.ReadinessStatus.Ready>
+    <XenogermPlanner.ReadinessStatus.NotReady>Не готовий</XenogermPlanner.ReadinessStatus.NotReady>
+    <XenogermPlanner.ReadinessStatus.EmptyTarget>Гени не заплановано</XenogermPlanner.ReadinessStatus.EmptyTarget>
+    <XenogermPlanner.ReadinessStatus.Degraded>Недоступні гени</XenogermPlanner.ReadinessStatus.Degraded>
+    <XenogermPlanner.ReadinessStatus.Unavailable>Неможливо перевірити</XenogermPlanner.ReadinessStatus.Unavailable>
+    <XenogermPlanner.ReadinessStatus.Unknown>Невідомо</XenogermPlanner.ReadinessStatus.Unknown>
+
+    <XenogermPlanner.GeneCoverageState.Covered>Доступний</XenogermPlanner.GeneCoverageState.Covered>
+    <XenogermPlanner.GeneCoverageState.ExactPayloadConflict>Зайві гени</XenogermPlanner.GeneCoverageState.ExactPayloadConflict>
+    <XenogermPlanner.GeneCoverageState.Missing>Відсутній</XenogermPlanner.GeneCoverageState.Missing>
+    <XenogermPlanner.GeneCoverageState.Unavailable>Недоступний</XenogermPlanner.GeneCoverageState.Unavailable>
+    <XenogermPlanner.GeneCoverageState.AvailableTooltip>Принаймні один генопак на поточній мапі містить цей ген і підходить для вибраної мети.</XenogermPlanner.GeneCoverageState.AvailableTooltip>
+    <XenogermPlanner.GeneCoverageState.ExactPayloadConflictTooltip>Цей ген доступний, але кожен генопак, що містить його, також додає гени поза точним набором генів.</XenogermPlanner.GeneCoverageState.ExactPayloadConflictTooltip>
+    <XenogermPlanner.GeneCoverageState.MissingTooltip>Жоден генопак на поточній мапі не містить цього гена.</XenogermPlanner.GeneCoverageState.MissingTooltip>
+
+    <XenogermPlanner.Template.Create>Створити шаблон ксенозародка</XenogermPlanner.Template.Create>
+    <XenogermPlanner.Template.CreateDescription>Створити шаблон ксенозародка з цього готового плану й зберегти його в поточній грі.</XenogermPlanner.Template.CreateDescription>
+    <XenogermPlanner.Template.Disabled.DataUnavailable>Відомості, необхідні для створення шаблону, недоступні.</XenogermPlanner.Template.Disabled.DataUnavailable>
+    <XenogermPlanner.Template.Disabled.NoActiveMap>Перед створенням шаблону ксенозародка відкрийте мапу колонії.</XenogermPlanner.Template.Disabled.NoActiveMap>
+    <XenogermPlanner.Template.Disabled.EmptyTarget>Перед створенням шаблону додайте до плану принаймні один ген.</XenogermPlanner.Template.Disabled.EmptyTarget>
+    <XenogermPlanner.Template.Disabled.Degraded>Перед створенням шаблону видаліть або замініть недоступні гени в плані.</XenogermPlanner.Template.Disabled.Degraded>
+    <XenogermPlanner.Template.Disabled.NotReady>Генопаки на поточній мапі не містять усіх генів із цього плану.</XenogermPlanner.Template.Disabled.NotReady>
+    <XenogermPlanner.Template.Disabled.ExactPayloadConflict>Генопаки на поточній мапі не дають змоги створити цей точний набір генів без додаткових генів.</XenogermPlanner.Template.Disabled.ExactPayloadConflict>
+    <XenogermPlanner.Template.Title>Створення шаблону ксенозародка</XenogermPlanner.Template.Title>
+    <XenogermPlanner.Template.Generation.Title>Створення шаблону ксенозародка</XenogermPlanner.Template.Generation.Title>
+    <XenogermPlanner.Template.Generation.InProgress>Пошук відповідних комбінацій генопаків</XenogermPlanner.Template.Generation.InProgress>
+    <XenogermPlanner.Template.Name>Назва</XenogermPlanner.Template.Name>
+    <XenogermPlanner.Template.Icon>Значок</XenogermPlanner.Template.Icon>
+    <XenogermPlanner.Template.Mode.Automatic>Автоматично</XenogermPlanner.Template.Mode.Automatic>
+    <XenogermPlanner.Template.Mode.AutomaticDescription>Використати найкращу припустиму комбінацію генопаків, знайдену Xenogerm Planner.</XenogermPlanner.Template.Mode.AutomaticDescription>
+    <XenogermPlanner.Template.Mode.AutomaticDescriptionLimited>Використати найкращу знайдену припустиму комбінацію. Пошук було обмежено, щоб не сповільнювати гру, тому можуть існувати й інші припустимі комбінації.</XenogermPlanner.Template.Mode.AutomaticDescriptionLimited>
+    <XenogermPlanner.Template.Mode.Customize>Вибрати інший варіант</XenogermPlanner.Template.Mode.Customize>
+    <XenogermPlanner.Template.Mode.CustomizeDescription>Переглянути й вибрати іншу припустиму комбінацію генопаків.</XenogermPlanner.Template.Mode.CustomizeDescription>
+    <XenogermPlanner.Template.Preview>Попередній перегляд шаблону</XenogermPlanner.Template.Preview>
+    <XenogermPlanner.Template.PlanMode>Мета плану: {0}</XenogermPlanner.Template.PlanMode>
+    <XenogermPlanner.Template.Alternatives>Припустимі комбінації</XenogermPlanner.Template.Alternatives>
+    <XenogermPlanner.Template.NoAlternatives>Інших припустимих комбінацій генопаків немає.</XenogermPlanner.Template.NoAlternatives>
+    <XenogermPlanner.Template.NoDisplayedAlternativesLimited>Додаткових комбінацій не знайдено. Пошук було обмежено, щоб не сповільнювати гру, тому можуть існувати й інші припустимі комбінації.</XenogermPlanner.Template.NoDisplayedAlternativesLimited>
+    <XenogermPlanner.Template.SearchLimitedWarning>Припустимих комбінацій забагато, і перевірка всіх варіантів може сповільнити гру. Показано лише обмежений набір; можуть існувати й інші припустимі комбінації.</XenogermPlanner.Template.SearchLimitedWarning>
+    <XenogermPlanner.Template.AutomaticCandidate>Автоматичний вибір</XenogermPlanner.Template.AutomaticCandidate>
+    <XenogermPlanner.Template.AlternativeCandidate>Варіант {0}</XenogermPlanner.Template.AlternativeCandidate>
+    <XenogermPlanner.Template.CandidateSummary>Наборів генів: {0} · Додаткових генів: {1} · Перелічено генів: {2}</XenogermPlanner.Template.CandidateSummary>
+    <XenogermPlanner.Template.GeneSetHeader>Набір генів {0} · Відповідних генопаків: {1}</XenogermPlanner.Template.GeneSetHeader>
+    <XenogermPlanner.Template.AdditionalGene>Дод.</XenogermPlanner.Template.AdditionalGene>
+    <XenogermPlanner.Template.AdditionalGeneCount>Додаткові гени: {0}</XenogermPlanner.Template.AdditionalGeneCount>
+    <XenogermPlanner.Template.AdditionalGenesNone>Додаткові гени: немає</XenogermPlanner.Template.AdditionalGenesNone>
+    <XenogermPlanner.Template.Biostats.Complexity>Комплексність</XenogermPlanner.Template.Biostats.Complexity>
+    <XenogermPlanner.Template.Biostats.MetabolicEfficiency>Ефективність метаболізму</XenogermPlanner.Template.Biostats.MetabolicEfficiency>
+    <XenogermPlanner.Template.Biostats.ArchiteCapsules>Архітні капсули</XenogermPlanner.Template.Biostats.ArchiteCapsules>
+    <XenogermPlanner.Template.Biostats.ComplexityTooltip>Комплексність усього шаблону після об’єднання всіх наборів генів.</XenogermPlanner.Template.Biostats.ComplexityTooltip>
+    <XenogermPlanner.Template.Biostats.MetabolicEfficiencyTooltip>Ефективність метаболізму всього шаблону. Додатні значення підвищують її, від’ємні — знижують.</XenogermPlanner.Template.Biostats.MetabolicEfficiencyTooltip>
+    <XenogermPlanner.Template.Biostats.ArchiteCapsulesTooltip>Кількість архітних капсул, потрібна для всього шаблону.</XenogermPlanner.Template.Biostats.ArchiteCapsulesTooltip>
+    <XenogermPlanner.Template.Biostats.GeneSetTooltip>Це значення стосується лише цього набору генів. Після об’єднання всіх наборів підсумкові значення шаблону можуть відрізнятися.</XenogermPlanner.Template.Biostats.GeneSetTooltip>
+    <XenogermPlanner.Template.NoCandidate>Немає припустимої комбінації генопаків. Повторно перевірте генопаки на поточній мапі й спробуйте ще раз.</XenogermPlanner.Template.NoCandidate>
+    <XenogermPlanner.Template.Save>Зберегти шаблон</XenogermPlanner.Template.Save>
+    <XenogermPlanner.Template.Cancel>Скасувати</XenogermPlanner.Template.Cancel>
+    <XenogermPlanner.Template.SaveFailure.InventoryUnavailable>Відомості про генопаки на поточній мапі недоступні.</XenogermPlanner.Template.SaveFailure.InventoryUnavailable>
+    <XenogermPlanner.Template.SaveFailure.CandidateInvalidForPlan>Вибрана комбінація генопаків більше не відповідає плану.</XenogermPlanner.Template.SaveFailure.CandidateInvalidForPlan>
+    <XenogermPlanner.Template.SaveFailure.CompositionUnavailable>Один або кілька вибраних наборів генів більше недоступні на поточній мапі. Знову відкрийте попередній перегляд і виберіть оновлену комбінацію.</XenogermPlanner.Template.SaveFailure.CompositionUnavailable>
+    <XenogermPlanner.Template.SaveFailure.VanillaRejected>RimWorld не вдалося створити цей шаблон ксенозародка.</XenogermPlanner.Template.SaveFailure.VanillaRejected>
+    <XenogermPlanner.Template.SaveFailure.Unknown>Не вдалося зберегти шаблон ксенозародка.</XenogermPlanner.Template.SaveFailure.Unknown>
+</LanguageData>

@@ -1,0 +1,26 @@
+# IDE
+.vs/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build and test output
+**/bin/
+**/obj/
+TestResults/
+*.trx
+
+# Local machine configuration
+src/XenogermPlanner.Local.props
+
+# Local and release-only documentation
+docs/local/
+
+# Deployed mod assemblies
+mod/Assemblies/
+
+# OS-generated files
+.DS_Store
+Thumbs.db

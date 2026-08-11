@@ -1,0 +1,7 @@
+<RunSettings>
+    <NUnit>
+        <Where>test == XenogermPlanner.Tests.Analysis.PlanReadinessPerformanceTests</Where>
+        <NumberOfTestWorkers>0</NumberOfTestWorkers>
+        <Verbosity>4</Verbosity>
+    </NUnit>
+</RunSettings>
