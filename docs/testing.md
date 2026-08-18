@@ -1,6 +1,6 @@
 # Xenogerm Planner testing policy
 
-This document defines the accepted automated testing and runtime acceptance boundaries of Xenogerm Planner. The current baseline includes the completed shared UI and layout-cache migration, tint-aware icon call-site migration, normalized primary and button assets, collection-level unique-name policy, target-gene `ExactPayloadConflict` analysis and presentation, separately versioned read-only integration API version `1`, window-owned analysis caching and their deterministic regression coverage. The external shared source is compiled into the Planner assembly and its ownership boundary has consumer integration coverage. Public reflection shape, DTO invariants, batch orchestration, Planner-owned relevance semantics, semantic integration, read-only API behavior, analysis-cache reuse and invalidation, and identity-based projection compatibility are covered. The final SVG sources and regenerated packaged PNG textures are present under the normalized paths. The current build, complete automated suite, repeated UI profiling and agreed runtime regression scenarios have been validated successfully.
+This document defines the accepted automated testing and runtime acceptance boundaries of Xenogerm Planner. The current baseline includes the completed shared UI and layout-cache migration, tint-aware icon call-site migration, normalized primary and button assets, collection-level unique-name policy, target-gene `ExactPayloadConflict` analysis and presentation, separately versioned read-only integration API version `1`, window-owned analysis caching and the validated unified plan-creation flow. The external shared source is compiled into the Planner assembly and its ownership boundary has consumer integration coverage. Public reflection shape, DTO invariants, batch orchestration, Planner-owned relevance semantics, semantic integration, read-only API behavior, analysis-cache reuse and invalidation, source transformation and revalidation, xenotype source projection, and identity-based presentation compatibility are covered. The final SVG sources and regenerated packaged PNG textures are present under the normalized paths. The current Release build, complete NUnit suite, repeated UI profiling and final runtime regression matrix have been validated successfully.
 
 It is a testing policy, not a product architecture specification or vanilla implementation reference.
 
@@ -30,7 +30,7 @@ This includes:
 
 * `XenogermPlan` invariants;
 * stable plan identity and collection-level display-name normalization through `Trim()` and `OrdinalIgnoreCase`;
-* deterministic unique-name allocation for duplicate, import, paste and restore paths;
+* deterministic unique-name allocation for duplicate, source-based creation, paste and restore paths;
 * manual create and rename conflict rejection without silent renaming;
 * distinct desired-gene semantics;
 * degraded unresolved requirements;
@@ -53,7 +53,9 @@ This includes:
 * semantic-composition-to-physical-pack resolution and stable representative selection;
 * shared raw and effective plan-gene biostat projections, including vanilla-style override projection, duplicate removal and independent complexity, metabolism and Archite totals;
 * candidate-level vanilla-style and per-composition raw genetic biostat calculations through the shared calculation boundary;
-* product-level readiness-notification transition semantics, including determinate baseline initialization, `Unavailable` handling, non-ready-to-ready delivery, re-arming and disabled-setting tracking.
+* product-level readiness-notification transition semantics, including determinate baseline initialization, `Unavailable` handling, non-ready-to-ready delivery, re-arming and disabled-setting tracking;
+* source-neutral Plan Editor initial-state semantics for new plans, including defensive distinct-gene snapshots and the default Coverage / readiness-notification settings;
+* unified source-list projection semantics, including independent collapsed-group state and deterministic source ordering.
 
 A regression that can silently turn `Ready` into `NotReady`, hide a valid candidate, select a different candidate under deterministic rules, treat an unresolved requirement as satisfied, or miss a supported blocker requires automated protection.
 
@@ -86,7 +88,7 @@ This includes:
 
 * versioned clipboard transfer round trips;
 * creation of a new stable identity for every pasted plan;
-* deterministic numeric name allocation when imported or pasted names conflict with the destination collection;
+* deterministic numeric name allocation when pasted names conflict with the destination collection;
 * exclusion of the source plan ID from transfer data;
 * preservation and destination-side resolution of unresolved `GeneDef.defName` requirements;
 * deterministic normalization of duplicate gene requirements;
@@ -181,7 +183,9 @@ Examples include:
 * physical reference deduplication;
 * preservation of facility power metadata;
 * spawned current-map potential-donor scope, gene-tracker filtering and exact pawn-reference deduplication;
-* import flattening and distinct-gene transformation;
+* `CustomXenogerm` source flattening, distinct-gene transformation and runtime-source revalidation;
+* premade `XenotypeDef` and saved `CustomXenotype` source transformation into source-neutral editor state;
+* saved `.xtp` source discovery, lazy native loading, unchanged-file cache reuse, metadata-driven reload and missing/load-failure isolation through injected vanilla-facing seams;
 * template physical re-resolution from current inventory;
 * validation of a selected template candidate against the current plan mode and target;
 * transformation of the vanilla save helper result into project-owned success or failure states.
@@ -211,7 +215,8 @@ Examples include:
 * formatting logic that combines several semantic values and is easy to misrepresent;
 * donor-count applicability and deterministic donor-count or donor-name ordering where those rules affect user interpretation;
 * metabolic-efficiency sign formatting and vanilla-style hunger-rate percentage formatting;
-* template candidate summaries, complete/incomplete search-state policy, disabled reasons and save-failure presentation when they combine multiple semantic values.
+* template candidate summaries, complete/incomplete search-state policy, disabled reasons and save-failure presentation when they combine multiple semantic values;
+* source-list grouping and source metadata projection where collapse state, source kind or failure state changes user interpretation.
 
 Automated tests are generally not required for:
 
@@ -236,7 +241,8 @@ This includes:
 * actual colors;
 * clipping and scrolling;
 * tabbed Planner interaction and layout;
-* FloatMenu interaction;
+* `Create` FloatMenu interaction and routing to `From scratch`, `From xenogerm template` and `From xenotype`;
+* semantic UI parity between xenogerm-template and xenotype source selection, including source list, gene preview, Cancel/Continue behavior and absence of plan settings from the source selector;
 * actual system clipboard integration;
 * potential-donor dialog layout, scrolling, full-row hover indication and camera navigation;
 * template-generation feedback dialog lifecycle and deferred search after the first rendered frame;
@@ -246,7 +252,7 @@ This includes:
 * template icon selector, name validation and modal lifecycle;
 * candidate-level and per-`GeneSet` genetic biostat rendering with public vanilla assets;
 * live Plan Editor complexity, metabolic efficiency, hunger rate and Archite Capsule rendering in create and edit modes;
-* manual name validation, duplicate/import/paste allocation and restored duplicate-name presentation;
+* manual name validation, source-based creation / duplicate / paste allocation and restored duplicate-name presentation;
 * Exact payload conflict status, labels, colors and tooltips in English, Russian and Ukrainian;
 * partial biostat presentation for an unchanged degraded plan and complete recalculation after the selected target changes;
 * parity with the vanilla metabolism-to-hunger-rate conversion and percentage presentation;
@@ -262,7 +268,10 @@ This includes:
 * actual game-map state;
 * actual RimWorld readiness-notification message presentation and lifecycle;
 * real Scribe save/load suppression behavior and pre-feature save defaults for notification fields;
-* readiness-notification checkbox layout in manual create/edit and import dialogs;
+* readiness-mode and readiness-notification controls in the Plan Editor for new and existing plans, with those controls absent from source-selection dialogs;
+* collapsible premade/saved xenotype groups, including repeated collapse/expand and scrolling without stale visible indices or an unbalanced scroll-view mouse-position stack;
+* actual saved `.xtp` discovery and vanilla version/load behavior, including source failure recovery and transition to editable Plan Editor state;
+* confirmation that selecting a source does not create a plan before the Plan Editor is saved;
 * independent delivery for multiple plans and active-map unavailable/restore scenarios;
 * implemented vanilla integration boundaries;
 * public API availability with an active map, without an active map and across new-game/load transitions;
@@ -276,7 +285,7 @@ This includes:
 
 Runtime acceptance should verify the visible or integration behavior that cannot be established reliably through project-owned deterministic logic alone.
 
-The completed current-build acceptance verified the migrated shared UI boundary, tint-aware icon call sites, normalized source and packaged asset paths, unique-name workflows, target-gene `ExactPayloadConflict` behavior, English/Russian/Ukrainian presentation, API version `1`, window analysis-cache lifecycle and the Plan Editor selected-gene removal regression. The complete automated suite, including API, semantic integration, analysis-cache and projection-cache fixtures, passed on the current build. Consumer integration tests prove that shared types are compiled into `XenogermPlanner.dll`, while API surface tests prove that no separate runtime DTO assembly is required. Repeated runtime profiling confirmed that the tested open-window scenarios no longer exhibit a persistent Planner-specific regression; those measurements are diagnostic evidence rather than a universal frame-rate guarantee.
+The completed current-build acceptance verified the migrated shared UI boundary, tint-aware icon call sites, normalized source and packaged asset paths, unique-name workflows, target-gene `ExactPayloadConflict` behavior, English/Russian/Ukrainian presentation, API version `1`, window analysis-cache lifecycle, the Plan Editor selected-gene removal regression and the unified creation flow. The current Release build and complete NUnit suite passed successfully, including source transformation, source-list projection, template-source provider, xenotype-source provider, editor-initial-state, API, semantic integration, analysis-cache and projection-cache fixtures. The final runtime regression matrix verified the common source selector, premade/saved xenotype grouping, native saved-xenotype loading, editable transition into the Plan Editor, source-selector scroll/collapse safety and continued correctness of existing create/edit/duplicate/paste workflows. Consumer integration tests prove that shared types are compiled into `XenogermPlanner.dll`, while API surface tests prove that no separate runtime DTO assembly is required. Repeated runtime profiling confirmed that the tested open-window scenarios no longer exhibit a persistent Planner-specific regression; those measurements are diagnostic evidence rather than a universal frame-rate guarantee.
 
 ## Regression tests
 

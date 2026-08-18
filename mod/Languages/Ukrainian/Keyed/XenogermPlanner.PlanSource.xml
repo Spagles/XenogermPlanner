@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <XenogermPlanner.PlanSource.Sources>Джерела</XenogermPlanner.PlanSource.Sources>
+    <XenogermPlanner.PlanSource.GeneCount>Генів: {0}</XenogermPlanner.PlanSource.GeneCount>
+    <XenogermPlanner.PlanSource.CannotUse>Не можна використати</XenogermPlanner.PlanSource.CannotUse>
+    <XenogermPlanner.PlanSource.NoSelection>Виберіть джерело, щоб переглянути його гени.</XenogermPlanner.PlanSource.NoSelection>
+    <XenogermPlanner.PlanSource.Loading>Завантаження джерела...</XenogermPlanner.PlanSource.Loading>
+    <XenogermPlanner.PlanSource.PreviewUnavailable>Попередній перегляд поки недоступний. Виберіть джерело ще раз, щоб повторити спробу.</XenogermPlanner.PlanSource.PreviewUnavailable>
+    <XenogermPlanner.PlanSource.Continue>Продовжити</XenogermPlanner.PlanSource.Continue>
+    <XenogermPlanner.PlanSource.Cancel>Скасувати</XenogermPlanner.PlanSource.Cancel>
+
+    <XenogermPlanner.PlanSource.XenogermTemplate.Title>Створити із шаблону ксенозародка</XenogermPlanner.PlanSource.XenogermTemplate.Title>
+    <XenogermPlanner.PlanSource.XenogermTemplate.EmptySources>Немає доступних шаблонів ксенозародка.</XenogermPlanner.PlanSource.XenogermTemplate.EmptySources>
+    <XenogermPlanner.PlanSource.XenogermTemplate.UnnamedSource>Безіменний шаблон ксенозародка</XenogermPlanner.PlanSource.XenogermTemplate.UnnamedSource>
+
+    <XenogermPlanner.PlanSource.Xenotype.Title>Створити із ксенотипу</XenogermPlanner.PlanSource.Xenotype.Title>
+    <XenogermPlanner.PlanSource.Xenotype.EmptySources>Немає доступних попередньо визначених або збережених ксенотипів.</XenogermPlanner.PlanSource.Xenotype.EmptySources>
+    <XenogermPlanner.PlanSource.Xenotype.PremadeGroup>Попередньо визначені ксенотипи</XenogermPlanner.PlanSource.Xenotype.PremadeGroup>
+    <XenogermPlanner.PlanSource.Xenotype.SavedGroup>Збережені ксенотипи</XenogermPlanner.PlanSource.Xenotype.SavedGroup>
+    <XenogermPlanner.PlanSource.Xenotype.SavedCustom>Збережений користувацький ксенотип</XenogermPlanner.PlanSource.Xenotype.SavedCustom>
+    <XenogermPlanner.PlanSource.Xenotype.UnnamedSource>Безіменний ксенотип</XenogermPlanner.PlanSource.Xenotype.UnnamedSource>
+
+    <XenogermPlanner.PlanSource.Errors.SourceUnavailable>Вибране джерело більше недоступне.</XenogermPlanner.PlanSource.Errors.SourceUnavailable>
+    <XenogermPlanner.PlanSource.Errors.InvalidSource>Вибране джерело містить неприпустимі або відсутні дані генів і не може бути використане.</XenogermPlanner.PlanSource.Errors.InvalidSource>
+    <XenogermPlanner.PlanSource.Errors.EmptySource>Вибране джерело не містить генів, які можна використати.</XenogermPlanner.PlanSource.Errors.EmptySource>
+    <XenogermPlanner.PlanSource.Errors.LoadFailed>Не вдалося завантажити вибране джерело.</XenogermPlanner.PlanSource.Errors.LoadFailed>
+</LanguageData>

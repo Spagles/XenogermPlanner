@@ -60,8 +60,6 @@ namespace XenogermPlanner.UI
 
         private static readonly ReloadableTexture2D _createPlanIcon = new ReloadableTexture2D("UI/Buttons/Create");
 
-        private static readonly ReloadableTexture2D _importPlanIcon = new ReloadableTexture2D("UI/Buttons/Import");
-
         private static readonly ReloadableTexture2D _pastePlanIcon = new ReloadableTexture2D("UI/Buttons/Paste");
 
         private static readonly ReloadableTexture2D _refreshInventoryIcon =
@@ -261,7 +259,6 @@ namespace XenogermPlanner.UI
         {
             float actionRight = rect.xMax;
             Rect pasteRect = GetHeaderActionRect(rect, ref actionRight, 0f);
-            Rect importRect = GetHeaderActionRect(rect, ref actionRight, RimWorldUiStyle.Metrics.IconButtonGap);
             Rect createRect = GetHeaderActionRect(rect, ref actionRight, RimWorldUiStyle.Metrics.IconButtonGap);
 
             var titleRect = new Rect(
@@ -282,17 +279,7 @@ namespace XenogermPlanner.UI
                     true,
                     "XenogermPlanner.Planner.CreatePlan".Translate().ToString()))
             {
-                OpenCreatePlanEditor(component);
-            }
-
-            if (RimWorldUiWidgets.DrawIconButton(
-                    importRect,
-                    _importPlanIcon.Texture,
-                    RimWorldUiStyle.Colors.PrimaryText,
-                    true,
-                    "XenogermPlanner.Planner.ImportPlan".Translate().ToString()))
-            {
-                OpenImportPlanDialog(component);
+                ShowCreatePlanMenu(component);
             }
 
             if (RimWorldUiWidgets.DrawIconButton(
@@ -1792,14 +1779,64 @@ namespace XenogermPlanner.UI
             HandlePlanSaved(plan);
         }
 
-        private void OpenImportPlanDialog(XenogermPlanGameComponent component)
+        private void ShowCreatePlanMenu(XenogermPlanGameComponent component)
         {
-            Find.WindowStack.Add(new XenogermPlanImportDialog(component, HandlePlanSaved));
+            var options = new List<FloatMenuOption>
+            {
+                new FloatMenuOption(
+                    "XenogermPlanner.PlanCreation.FromScratch".Translate().ToString(),
+                    () => OpenCreatePlanEditor(component)),
+                new FloatMenuOption(
+                    "XenogermPlanner.PlanCreation.FromXenogermTemplate".Translate().ToString(),
+                    () => OpenXenogermTemplateSourceDialog(component)),
+                new FloatMenuOption(
+                    "XenogermPlanner.PlanCreation.FromXenotype".Translate().ToString(),
+                    () => OpenXenotypeSourceDialog(component))
+            };
+
+            Find.WindowStack.Add(new FloatMenu(options));
+        }
+
+        private void OpenXenogermTemplateSourceDialog(XenogermPlanGameComponent component)
+        {
+            Find.WindowStack.Add(
+                new XenogermPlanSourceDialog(
+                    new CustomXenogermPlanSourceProvider(),
+                    selection => OpenCreatePlanEditorFromSource(component, selection)));
+        }
+
+        private void OpenXenotypeSourceDialog(XenogermPlanGameComponent component)
+        {
+            Find.WindowStack.Add(
+                new XenogermPlanSourceDialog(
+                    new XenotypePlanSourceProvider(),
+                    selection => OpenCreatePlanEditorFromSource(component, selection)));
+        }
+
+        private void OpenCreatePlanEditorFromSource(
+            XenogermPlanGameComponent component,
+            XenogermPlanSourceSelection selection)
+        {
+            if (selection == null)
+                return;
+
+            string initialPlanName = component.AllocateUniquePlanName(selection.Name);
+
+            var initialState = XenogermPlanEditorInitialState.CreateFromSource(initialPlanName, selection.DesiredGenes);
+
+            OpenCreatePlanEditor(component, initialState);
         }
 
         private void OpenCreatePlanEditor(XenogermPlanGameComponent component)
         {
             Find.WindowStack.Add(new XenogermPlanEditorDialog(component, HandlePlanSaved));
+        }
+
+        private void OpenCreatePlanEditor(
+            XenogermPlanGameComponent component,
+            XenogermPlanEditorInitialState initialState)
+        {
+            Find.WindowStack.Add(new XenogermPlanEditorDialog(component, initialState, HandlePlanSaved));
         }
 
         private void OpenEditPlanEditor(XenogermPlanGameComponent component, XenogermPlan plan)

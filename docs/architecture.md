@@ -2,7 +2,7 @@
 
 This document defines the accepted product architecture and implementation boundaries of Xenogerm Planner.
 
-The current implementation provides a validated release baseline covering planning, readiness, assembler, donor, notification, template generation, localization, optional integration and the accepted UI architecture. The Planner uses the external compile-time shared UI source for canonical generic controls, layouts, IMGUI state handling, variable-height layout caching and consumer-neutral icon tint application, with assembly ownership covered by integration tests. Display names follow the collection-level unique-name policy, and Exact payload readiness exposes target-gene `ExactPayloadConflict` diagnostics without changing the high-level readiness state machine. The separately versioned read-only integration API version `1`, its Planner-owned relevance query, public contract coverage and external integration guide are implemented and consumed optionally by Settlement Trade Overview. Window-owned transient analysis caching now prevents repeated readiness and target analysis on unchanged IMGUI events, donor and assembler analysis is resolved lazily for the active tab with bounded live-state refresh, and presentation caches use stable identity keys. Plan Editor selected-gene removal is deferred until scroll-view traversal completes. English, Russian and Ukrainian resources, normalized assets, the current build, automated suite, performance profiling and agreed compatibility and regression matrix have been validated successfully. There is no active implementation stage in the current development plan.
+The current implementation contains the complete validated released baseline and an additional validated development baseline for the unified plan-creation flow targeted at version `1.1.0`. Planning, readiness, assembler, donor, notification, template generation, localization, optional integration and the accepted UI architecture remain implemented. New-plan creation is now unified behind `Create`: from scratch, from a runtime xenogerm template, or from a premade or saved xenotype, with every branch passing through the existing Plan Editor before a new independent `XenogermPlan` is saved. The Planner uses the external compile-time shared UI source for canonical generic controls, layouts, IMGUI state handling, variable-height layout caching and consumer-neutral icon tint application, with assembly ownership covered by integration tests. Display names follow the collection-level unique-name policy, and Exact payload readiness exposes target-gene `ExactPayloadConflict` diagnostics without changing the high-level readiness state machine. The separately versioned read-only integration API version `1`, its Planner-owned relevance query, public contract coverage and external integration guide are implemented and consumed optionally by Settlement Trade Overview. Window-owned transient analysis caching prevents repeated readiness and target analysis on unchanged IMGUI events, donor and assembler analysis is resolved lazily for the active tab with bounded live-state refresh, and presentation caches use stable identity keys. English, Russian and Ukrainian resources, the current Release build, complete NUnit suite, performance profiling and final runtime regression matrix have been validated successfully. Trader relevance notifications remain future development work and are not treated as current product behavior.
 
 It is an architecture specification, not an implementation guide or a vanilla implementation reference.
 
@@ -30,16 +30,28 @@ The central planning entity is a mod-owned `XenogermPlan`.
 The implemented creation and reuse flow is:
 
 ```text
+NEW PLAN CREATION
+──────────────────────────────────────────────────────────────
 full runtime GeneDef catalog ─────────────┐
 runtime-visible CustomXenogerm ───────────┤
-existing XenogermPlan ────────────────────┤─→ independent XenogermPlan
-versioned clipboard transfer payload ─────┘
-                                                   ↓
-                               desired distinct physical payload
-                                                   ↓
-                                           plan readiness
-                                                   ↓
-                                 optional assembler readiness
+runtime XenotypeDef ──────────────────────┤─→ unified Create source flow
+saved custom xenotype .xtp ───────────────┘            ↓
+                                                  Plan Editor
+                                                       ↓
+                                             independent XenogermPlan
+
+REUSE
+──────────────────────────────────────────────────────────────
+existing XenogermPlan ───────────────────────────────→ duplicate
+versioned clipboard transfer payload ────────────────→ paste
+                                                       ↓
+                                             independent XenogermPlan
+                                                       ↓
+                                    desired distinct physical payload
+                                                       ↓
+                                               plan readiness
+                                                       ↓
+                                     optional assembler readiness
 ```
 
 The implemented template-output flow adds:
@@ -58,12 +70,12 @@ A `XenogermPlan` represents a desired distinct physical xenogerm gene payload.
 
 The target records which distinct genes should be physically present in the resulting xenogerm. Mutually exclusive genes remain valid target members. Vanilla effective, active and overridden gene states are derived context-dependent results and are not normalized into plan-owned data.
 
-It is independent from the physical genepacks currently present on the map and independent from the lifecycle of a vanilla `CustomXenogerm` after an import or template-generation operation has completed.
+It is independent from the physical genepacks currently present on the map and independent from the lifecycle of any vanilla creation source after source-based creation or template-generation operations have completed.
 
 Vanilla `CustomXenogerm` remains relevant as:
 
 * a verified part of the vanilla xenogerm production flow;
-* a supported import source;
+* a supported transient source for `From xenogerm template` creation;
 * an implemented template output created from verified concrete physical genepack composition;
 * an integration reference for Gene Assembler behavior.
 
@@ -191,7 +203,7 @@ Under the accepted policy:
 * renaming a plan does not change its stable ID;
 * plan collection operations that require identity use the stable ID rather than the display name;
 * manual create and rename reject a conflicting name through localized validation rather than silently changing user input;
-* duplication, import and clipboard paste allocate a deterministic numeric suffix when their preferred name is occupied;
+* duplication, source-based creation and clipboard paste allocate a deterministic numeric suffix when their preferred name is occupied;
 * duplication keeps the localized `copy` form as its preferred candidate before numeric allocation;
 * loading preserves the first occurrence of a name and deterministically renames later duplicates;
 * an existing numeric suffix is continued as one sequence instead of producing names such as `Plan 2 2`;
@@ -231,42 +243,36 @@ Plan identity is not derived from desired gene composition, a source template or
 
 ## Plan sources
 
-The implemented baseline supports four creation and reuse paths:
+The implemented baseline separates new-plan creation from plan reuse.
 
-* manual creation from the runtime gene catalog;
-* import from a runtime-visible vanilla `CustomXenogerm`;
-* duplication of an existing `XenogermPlan`;
-* paste from a versioned clipboard transfer payload.
-
-Every creation or reuse path produces an independent mod-owned plan identity. Every path applies the same target rule: flatten where required, remove exact duplicate `GeneDef` occurrences and preserve all distinct conflicting genes as physical payload requirements.
-
-### Manual creation from the gene catalog
-
-The player can create a plan from the complete runtime gene catalog supported by the current game and active mod configuration.
-
-The conceptual flow is:
+New plans are created through one `Create` entry flow:
 
 ```text
-runtime GeneDef catalog
+Create
+├─ From scratch
+├─ From xenogerm template
+└─ From xenotype
         ↓
-user gene selection
+existing Plan Editor
         ↓
-distinct desired GeneDef set
-        ↓
-XenogermPlan
+independent XenogermPlan
 ```
 
-Plan creation is independent from current physical genepack inventory.
+Duplication and versioned clipboard paste remain separate reuse operations. Every path produces an independent mod-owned plan identity and applies the same desired-target rule: flatten where required, remove exact duplicate `GeneDef` occurrences and preserve all distinct conflicting genes as physical payload requirements.
 
-A desired gene does not need to be present in any currently owned genepack.
+The source selector is a transient UI boundary. It owns source discovery, source validation and a source gene preview; it does not own plan readiness mode, readiness-notification settings or target diagnostics. Those settings remain part of the existing Plan Editor.
 
-The gene catalog is a source for creating and editing the plan target. It is not an availability source and does not affect readiness by itself.
+### From scratch
 
-### Import from `CustomXenogerm`
+`From scratch` opens the existing Plan Editor with an empty initial gene selection.
 
-Runtime-visible vanilla `CustomXenogerm` entries are supported import sources.
+The complete runtime `GeneDef` catalog remains available for manual selection. Plan creation is independent from current physical genepack inventory, and a desired gene does not need to be present in any currently owned genepack.
 
-The conceptual import flow is:
+### From xenogerm template
+
+Runtime-visible vanilla `CustomXenogerm` entries are supported transient creation sources.
+
+The source transformation is:
 
 ```text
 CustomXenogerm
@@ -277,10 +283,10 @@ flatten runtime-visible GeneDef values
         ↓
 distinct
         ↓
-XenogermPlan
+editable Plan Editor initial state
 ```
 
-Import intentionally discards vanilla template grouping and multiplicity.
+The transformation intentionally discards vanilla template grouping and multiplicity.
 
 Example:
 
@@ -290,23 +296,42 @@ CustomXenogerm.genesets:
     [A, B]
     [C]
 
-Imported XenogermPlan target:
+Plan Editor initial target:
     { A, B, C }
 ```
 
-The source `CustomXenogerm` is used only while creating the plan.
+The source `CustomXenogerm` is used only while preparing the editor state. The Planner revalidates the selected runtime source before continuing. The source object is not retained by the saved plan, deleting or replacing the source does not mutate an already saved plan, and editing the plan does not modify the vanilla template.
 
-After a successful import:
+The Planner uses only runtime-visible gene data that is actually available. It does not infer missing genes from stale labels, template names or other presentation metadata.
 
-* the plan does not retain the source runtime object reference;
-* same-name replacement of the source template does not modify the plan;
-* deleting the source template does not remove the plan;
-* save/load recreation of the source template object does not affect the plan;
-* editing the plan does not modify the vanilla template.
+### From xenotype
 
-Import must use the runtime-visible vanilla data that is actually available.
+`From xenotype` supports two confirmed source groups:
 
-The Planner must not infer missing genes from stale labels, template names or other presentation metadata.
+```text
+Premade xenotypes
+→ DefDatabase<XenotypeDef>.AllDefs
+→ XenotypeDef.genes
+
+Saved xenotypes
+→ GenFilePaths.AllCustomXenotypeFiles
+→ vanilla .xtp loading flow
+→ CustomXenotype.genes
+```
+
+Premade vanilla and modded `XenotypeDef` entries remain in one `Premade xenotypes` group. The current implementation does not introduce a separate vanilla-versus-modded classification contract.
+
+Saved `.xtp` sources are discovered through the vanilla global xenotype library and loaded lazily through the verified vanilla version/load boundary. Successfully resolved source data is treated as transient editor input and may be revalidated when the user continues.
+
+Both xenotype source kinds provide only their current resolved `GeneDef` collection as editable Plan Editor initial state. Pawn phenotype reconstruction, effective/active gene state and `Current.Game.customXenotypeDatabase` are not source catalogs for this feature.
+
+### Shared source-selection UI
+
+`From xenogerm template` and `From xenotype` use one semantic source-selection UI. It presents source entries and a gene preview while delegating source discovery and loading to source-specific providers.
+
+For xenotypes, `Premade xenotypes` and `Saved xenotypes` are independent collapsible categories. Category state is transient presentation state and does not affect the selected source or the resulting plan target.
+
+The source selector does not expose readiness mode or readiness-notification controls. Continuing from a source opens the existing Plan Editor with source-neutral initial state; the normal new-plan defaults are Coverage mode with readiness notifications enabled, and the user can change plan settings and genes before saving.
 
 ### Duplication of an existing plan
 
@@ -688,14 +713,14 @@ CustomXenogerm source:
     [C]
 ```
 
-imports as:
+loads into the Plan Editor as:
 
 ```text
 XenogermPlan target:
     { A, B, C }
 ```
 
-After import, the original pack grouping is no longer a plan requirement.
+After source-based creation, the original pack grouping is no longer a plan requirement.
 
 This is an intentional product distinction between:
 
@@ -767,9 +792,9 @@ The accepted transition semantics are:
 
 The enabled setting and notification delivery cursor are plan-owned persisted state. The cursor exists only to suppress duplicate delivery across repeated evaluation and save/load; it is not a persisted readiness result and cannot be used as a source of current readiness.
 
-New manually created and imported plans use the enabled setting by default and start with an uninitialized cursor. Duplicating a plan copies the setting but not the cursor. Clipboard transfer excludes both the setting and cursor, so a pasted plan receives the destination defaults and a new baseline lifecycle.
+New plans created through the Plan Editor use the enabled setting by default and start with an uninitialized cursor. Duplicating a plan copies the setting but not the cursor. Clipboard transfer excludes both the setting and cursor, so a pasted plan receives the destination defaults and a new baseline lifecycle.
 
-The Planner exposes the setting in manual create/edit and `CustomXenogerm` import flows through standard RimWorld checkbox controls. UI code edits the setting and invalidates notification evaluation but does not define transition semantics.
+The Planner exposes the setting in the Plan Editor for new and existing plans through standard RimWorld checkbox controls. Source-selection dialogs do not own this setting. UI code edits the setting and invalidates notification evaluation but does not define transition semantics.
 
 Message delivery uses the current plan display name through the shared Planner presentation boundary and sends a standard non-historical `PositiveEvent`. Failure while evaluating or delivering one plan is isolated and logged without preventing evaluation of other plans, save loading, plan persistence or core Planner access.
 
@@ -1094,7 +1119,7 @@ Biostat values are not persisted in `XenogermPlan`, do not alter readiness seman
 
 ## Degraded data policy
 
-Xenogerm Planner must fail safely when plan or import data is incomplete or structurally unreliable.
+Xenogerm Planner must fail safely when plan or creation-source data is incomplete or structurally unreliable.
 
 The following rules apply:
 
@@ -1104,7 +1129,7 @@ The following rules apply:
 * structurally unreliable plan data must not produce a `Ready` result;
 * one degraded plan must not prevent other valid plans from loading or being analyzed;
 * derived readiness state must be rebuilt from the currently valid plan and inventory data;
-* runtime `CustomXenogerm` import uses only the composition visible in the current runtime object;
+* runtime `CustomXenogerm` source-based creation uses only the composition visible in the current runtime object;
 * the Planner does not claim to restore genes already removed from vanilla runtime data.
 
 The verified vanilla source-level flow shows that unresolved `GeneDef` references in `GeneSet` can become `null` and be removed during `PostLoadInit`.
@@ -1119,26 +1144,26 @@ It is not an architecture assumption that vanilla data can recover after the mis
 
 Core Xenogerm Planner workflows use a separate Planner interface.
 
-The release UI is localized in English, Russian and Ukrainian through the existing Keyed and DefInjected resources. All languages use the same project-owned presentation, shared widget, style and layout boundaries.
+The current Planner UI is localized in English, Russian and Ukrainian through the existing Keyed and DefInjected resources. All languages use the same project-owned presentation, shared widget, style and layout boundaries.
 
 The implemented Planner UI is responsible for:
 
 * displaying the plan collection;
 * filtering the visible plan collection by display name without changing plan identity, order or persisted state;
 * selecting a plan by its stable identity;
-* creating a plan from the runtime gene catalog;
-* importing a runtime-visible vanilla `CustomXenogerm`;
+* creating a plan through the unified `Create` flow from scratch, a runtime-visible vanilla `CustomXenogerm`, a premade `XenotypeDef` or a saved custom xenotype `.xtp`;
+* presenting one shared source-selection UI for xenogerm-template and xenotype creation, with source-specific discovery/loading and editable gene preview;
 * editing desired genes and the display name;
 * displaying live effective complexity, metabolic efficiency, hunger rate and required Archite Capsules for the current Plan Editor target;
 * duplicating a plan and copying or pasting a plan through the clipboard boundary;
 * presenting collection actions, selected-plan actions and inventory refresh as shared contextual icon controls with localized tooltips and disabled states;
 * selecting the readiness mode;
-* configuring the per-plan product-readiness notification setting in create/edit and import workflows;
+* configuring the per-plan product-readiness notification setting in the Plan Editor for new and existing plans;
 * displaying product-level readiness and player-facing availability diagnostics;
 * selecting or clearing one transient current-map Gene Assembler;
 * displaying separate assembler readiness, supported blocking reasons and secondary assembler diagnostics;
 * presenting details through the dedicated `Overview`, `Gene assembler` and `Gene effects` tabs;
-* presenting derived conflict and prerequisite diagnostics for existing plans, Plan Editor targets and import previews;
+* presenting derived conflict and prerequisite diagnostics for existing plans and Plan Editor targets;
 * providing the agreed Plan Editor bulk actions as contextual icon controls in the fixed `Gene catalog` and `Selected genes` headers, with localized tooltips and disabled states;
 * opening native info cards for displayed genes and exact loose or held genepacks through a shared RMB context-menu boundary while preserving existing left-click actions;
 * presenting aligned product and assembler statuses, native complexity and Archite blocker assets, and adaptive non-archite/archite genepack tooltips;
@@ -1154,9 +1179,9 @@ The implemented Planner UI is responsible for:
 * showing the concrete additional-gene summary above the scrollable grouped `GeneSet` preview, together with physical-copy counts and genetic biostats;
 * collecting template name and icon through a dedicated modal dialog and saving through the verified vanilla helper;
 * invalidating background notification evaluation after plan mutations without recomputing transition semantics in the UI;
-* applying one shared `XenogermPlannerStyle` palette and metric registry through reusable Planner widgets across the main tab and modal dialogs;
+* applying shared `RimWorldUiStyle` colors and generic UI metrics together with Planner-owned metrics and semantic presentation through reusable Planner widgets across the main tab and modal dialogs;
 * preserving native RimWorld `Window` ownership of outer window chrome while applying Planner styling to project-owned content surfaces;
-* force-pausing the game while modal Plan Editor, import, potential-donor details, template-generation and template-creation windows absorb surrounding input.
+* force-pausing the game while modal Plan Editor, source-selection, potential-donor details, template-generation and template-creation windows absorb surrounding input.
 
 The Plan Editor selected-gene list treats mutation as a post-render action. A row may request removal while it is drawn, but the selected collection and derived target analysis are updated only after visible-row traversal has ended. The scroll view is closed through a guaranteed `finally` boundary before the mutation is applied, preventing stale visible indices and an unbalanced IMGUI mouse-position stack.
 
@@ -1505,11 +1530,16 @@ physical Genepack inventory
 potential pawn gene sources
 → implemented informational acquisition hints
 
-active PassingShip genepack offers
-→ possible future temporary trade hints
+active orbital and visiting caravan trader genepack offers
+→ accepted future temporary trade hints
+→ native current-state access confirmed
 ```
 
-No advisory source satisfies missing plan requirements or changes a plan from not ready to ready. `PassingShip` stock is specifically excluded from physical product inventory even though generic map-holder traversal can discover it.
+No advisory source satisfies missing plan requirements or changes a plan from not ready to ready. Trader stock remains outside physical product inventory; `PassingShip` stock is specifically excluded even though generic map-holder traversal can discover it.
+
+For future trader advisory analysis, the confirmed native current-state boundaries are active `TradeShip` instances from `Map.passingShipManager.passingShips` and visiting trader caravans from `Map.lordManager.lords` with `LordJob_TradeWithColony` and `TraderCaravanUtility.FindTrader`. Concrete current stock is read through `ITrader.Goods`, and concrete `Genepack` composition is read through its native `GeneSet` boundary.
+
+The confirmed lifecycle result does not provide one suitable public stock-ready arrival event for both supported trader branches. Future implementation therefore uses Planner-owned refresh/reconciliation over current native state rather than requiring lifecycle patching. Exact refresh cadence, reconciliation triggers, deduplication and notification-state behavior remain future implementation decisions.
 
 The main pawn donor rule is based on verified Gene Extractor output-selection semantics:
 
@@ -1555,7 +1585,7 @@ The measurements apply to the tested hardware, save state and mod configuration 
 
 Independent `XenogermPlan` persistence preserves unresolved desired-gene def names and exposes a degraded plan state under the rules in this document.
 
-Vanilla `CustomXenogerm.GeneSet` follows a different lifecycle: unresolved `GeneDef` references can become `null` and be removed during `PostLoadInit`. Recovery of those removed vanilla template entries after restoring the source definition is not guaranteed, especially after the affected save is written again. Import uses only the composition visible in the current runtime object.
+Vanilla `CustomXenogerm.GeneSet` follows a different lifecycle: unresolved `GeneDef` references can become `null` and be removed during `PostLoadInit`. Recovery of those removed vanilla template entries after restoring the source definition is not guaranteed, especially after the affected save is written again. Source-based creation uses only the composition visible in the current runtime object.
 
 The source-level evidence leaves vanilla recovery after a temporarily unavailable definition uncertain. That uncertainty does not authorize reconstruction from labels or other presentation metadata.
 
@@ -1566,7 +1596,7 @@ Gene Extractor selection semantics required for potential-donor analysis are ver
 The implemented baseline is:
 
 ```text
-XenogermPlan model, persistence and creation/import flows
+XenogermPlan model, persistence and unified creation/reuse flows
         ↓
 independent plan duplication and versioned clipboard transfer
         ↓

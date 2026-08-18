@@ -10,8 +10,8 @@ Plans are saved with your game and remain independent from vanilla xenogerm temp
 
 ## Features
 
-- Create and edit plans using all genes available in your game.
-- Import existing vanilla xenogerm templates.
+- Create plans from scratch, from existing vanilla xenogerm templates, or from premade and saved xenotypes, then edit the genes before saving.
+- Edit existing plans using all genes available in your game.
 - Duplicate plans or copy and paste them through the clipboard.
 - Track the genepacks currently available on your active map.
 - Inspect genes and genepacks or jump directly to their location.

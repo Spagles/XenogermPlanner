@@ -28,6 +28,8 @@ Xenogerm Planner integrates through standard RimWorld 1.6 and Biotech data and r
 * connected Gene Banks and Gene Processors exposed by a selected Gene Assembler;
 * pawn gene data used by the vanilla Gene Extractor selection rules;
 * save-local vanilla `CustomXenogerm` templates;
+* runtime premade `XenotypeDef` entries used as plan-creation sources;
+* saved custom xenotype `.xtp` files loaded through the vanilla xenotype loading flow;
 * RimWorld Scribe save data for mod-owned plans.
 
 The supported baseline assumes those boundaries retain their normal meaning.
@@ -72,7 +74,7 @@ A saved `XenogermPlan` stores desired gene requirements by `GeneDef.defName`. Wh
 
 This behavior belongs to Xenogerm Planner's own plan persistence.
 
-Vanilla `CustomXenogerm` templates use a different save path. RimWorld can remove unresolved genes from a loaded vanilla `GeneSet`. Recovery of those removed template entries after restoring the source mod is not guaranteed, especially after the affected save has been written again. Import can only use the gene data still present in the current runtime template.
+Vanilla `CustomXenogerm` templates use a different save path. RimWorld can remove unresolved genes from a loaded vanilla `GeneSet`. Recovery of those removed template entries after restoring the source mod is not guaranteed, especially after the affected save has been written again. Source-based plan creation can only use the gene data still present in the current runtime template.
 
 ## Current-map inventory scope
 
@@ -108,7 +110,7 @@ A selected Gene Assembler has a separate scope containing only the physical gene
 * Genepacks are not reserved between plans. Several plans may refer to the same reusable physical packs.
 * Product-level planning covers only the current active map, not the entire faction across maps and caravans.
 * Passing Ship offers and other temporary trade sources do not satisfy readiness.
-* The mod does not manage the global `.xtp` custom xenotype library.
+* Saved custom xenotype `.xtp` files can be used as plan-creation sources, but the mod does not manage or modify the global `.xtp` custom xenotype library.
 
 ## Template search limitation
 

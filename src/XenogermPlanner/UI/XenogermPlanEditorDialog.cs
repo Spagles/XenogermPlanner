@@ -26,8 +26,6 @@ namespace XenogermPlanner.UI
         private const float SearchRowHeight = RimWorldUiStyle.Metrics.SearchRowHeight;
         private const float CatalogRowHeight = RimWorldUiStyle.Metrics.CompactRowHeight;
         private const float GeneRowHeight = RimWorldUiStyle.Metrics.CompactRowHeight;
-        private const float CategoryIconSize = 18f;
-        private const float CategoryIconGap = 4f;
         private const float SelectedHeaderGap = 8f;
         private const float SectionHeaderContentGap = RimWorldUiStyle.Metrics.SectionGap;
         private const float FooterHeight = 40f;
@@ -90,7 +88,19 @@ namespace XenogermPlanner.UI
         public XenogermPlanEditorDialog(XenogermPlanGameComponent component, Action<XenogermPlan> onSaved) : this(
             component,
             onSaved,
-            existingPlan: null)
+            existingPlan: null,
+            XenogermPlanEditorInitialState.CreateEmpty())
+        {
+        }
+
+        internal XenogermPlanEditorDialog(
+            XenogermPlanGameComponent component,
+            XenogermPlanEditorInitialState initialState,
+            Action<XenogermPlan> onSaved) : this(
+            component,
+            onSaved,
+            existingPlan: null,
+            initialState ?? throw new ArgumentNullException(nameof(initialState)))
         {
         }
 
@@ -100,27 +110,30 @@ namespace XenogermPlanner.UI
             Action<XenogermPlan> onSaved) : this(
             component,
             onSaved,
-            existingPlan ?? throw new ArgumentNullException(nameof(existingPlan)))
+            existingPlan ?? throw new ArgumentNullException(nameof(existingPlan)),
+            initialState: null)
         {
         }
 
         private XenogermPlanEditorDialog(
             XenogermPlanGameComponent component,
             Action<XenogermPlan> onSaved,
-            XenogermPlan existingPlan)
+            XenogermPlan existingPlan,
+            XenogermPlanEditorInitialState initialState)
         {
             _component = component ?? throw new ArgumentNullException(nameof(component));
             _existingPlan = existingPlan;
             _onSaved = onSaved;
 
-            _planName = existingPlan?.Name ?? string.Empty;
-            _readinessMode = existingPlan?.ReadinessMode ?? PlanReadinessMode.Coverage;
-            _readinessNotificationsEnabled = existingPlan?.ReadinessNotificationsEnabled ?? true;
+            _planName = existingPlan?.Name ?? initialState?.PlanName ?? string.Empty;
+            _readinessMode = existingPlan?.ReadinessMode ?? initialState?.ReadinessMode ?? PlanReadinessMode.Coverage;
+            _readinessNotificationsEnabled = existingPlan?.ReadinessNotificationsEnabled ??
+                                             initialState?.ReadinessNotificationsEnabled ?? true;
             _searchText = string.Empty;
 
-            _selectedGenes = existingPlan == null
-                ? new HashSet<GeneDef>()
-                : new HashSet<GeneDef>(existingPlan.DesiredGenes);
+            _selectedGenes = existingPlan != null
+                ? new HashSet<GeneDef>(existingPlan.DesiredGenes)
+                : new HashSet<GeneDef>(initialState?.DesiredGenes ?? Array.Empty<GeneDef>());
 
             _catalogGenes =
                 XenogermPlannerPresentation.GetGenesInCatalogOrder(DefDatabase<GeneDef>.AllDefsListForReading);
@@ -532,37 +545,15 @@ namespace XenogermPlanner.UI
 
         private void DrawGeneCategoryRow(Rect rect, GeneCategoryDef category, bool expanded, int rowIndex)
         {
-            RimWorldUiWidgets.DrawSelectableRowBackground(
-                rect,
-                rowIndex,
-                selected: false,
-                hovered: Mouse.IsOver(rect),
-                drawAccent: false);
-
-            var iconRect = new Rect(
-                rect.x,
-                rect.y + (rect.height - CategoryIconSize) * 0.5f,
-                CategoryIconSize,
-                CategoryIconSize);
-
-            var labelRect = new Rect(
-                iconRect.xMax + CategoryIconGap,
-                rect.y,
-                rect.width - CategoryIconSize - CategoryIconGap,
-                rect.height);
-
-            GUI.DrawTexture(iconRect, expanded ? TexButton.Collapse : TexButton.Reveal);
-
-            Text.Font = GameFont.Small;
-            Text.Anchor = TextAnchor.MiddleLeft;
-
-            Widgets.Label(labelRect, category.LabelCap);
-
-            if (IsSearchActive)
+            if (!XenogermPlannerWidgets.DrawCollapsibleSectionRow(
+                    rect,
+                    category.LabelCap.ToString(),
+                    expanded,
+                    rowIndex,
+                    enabled: !IsSearchActive))
+            {
                 return;
-
-            if (Event.current.button != 0 || !Widgets.ButtonInvisible(rect))
-                return;
+            }
 
             _collapsedCategories[category] = expanded;
             RefreshCatalogProjection();

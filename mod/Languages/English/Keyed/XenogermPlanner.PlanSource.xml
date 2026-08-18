@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <XenogermPlanner.PlanSource.Sources>Sources</XenogermPlanner.PlanSource.Sources>
+    <XenogermPlanner.PlanSource.GeneCount>Genes: {0}</XenogermPlanner.PlanSource.GeneCount>
+    <XenogermPlanner.PlanSource.CannotUse>Cannot use</XenogermPlanner.PlanSource.CannotUse>
+    <XenogermPlanner.PlanSource.NoSelection>Select a source to preview its genes.</XenogermPlanner.PlanSource.NoSelection>
+    <XenogermPlanner.PlanSource.Loading>Loading source...</XenogermPlanner.PlanSource.Loading>
+    <XenogermPlanner.PlanSource.PreviewUnavailable>The preview is not available yet. Select the source again to retry.</XenogermPlanner.PlanSource.PreviewUnavailable>
+    <XenogermPlanner.PlanSource.Continue>Continue</XenogermPlanner.PlanSource.Continue>
+    <XenogermPlanner.PlanSource.Cancel>Cancel</XenogermPlanner.PlanSource.Cancel>
+
+    <XenogermPlanner.PlanSource.XenogermTemplate.Title>Create from xenogerm template</XenogermPlanner.PlanSource.XenogermTemplate.Title>
+    <XenogermPlanner.PlanSource.XenogermTemplate.EmptySources>No xenogerm templates are available.</XenogermPlanner.PlanSource.XenogermTemplate.EmptySources>
+    <XenogermPlanner.PlanSource.XenogermTemplate.UnnamedSource>Unnamed xenogerm template</XenogermPlanner.PlanSource.XenogermTemplate.UnnamedSource>
+
+    <XenogermPlanner.PlanSource.Xenotype.Title>Create from xenotype</XenogermPlanner.PlanSource.Xenotype.Title>
+    <XenogermPlanner.PlanSource.Xenotype.EmptySources>No premade or saved xenotypes are available.</XenogermPlanner.PlanSource.Xenotype.EmptySources>
+    <XenogermPlanner.PlanSource.Xenotype.PremadeGroup>Premade xenotypes</XenogermPlanner.PlanSource.Xenotype.PremadeGroup>
+    <XenogermPlanner.PlanSource.Xenotype.SavedGroup>Saved xenotypes</XenogermPlanner.PlanSource.Xenotype.SavedGroup>
+    <XenogermPlanner.PlanSource.Xenotype.SavedCustom>Saved custom xenotype</XenogermPlanner.PlanSource.Xenotype.SavedCustom>
+    <XenogermPlanner.PlanSource.Xenotype.UnnamedSource>Unnamed xenotype</XenogermPlanner.PlanSource.Xenotype.UnnamedSource>
+
+    <XenogermPlanner.PlanSource.Errors.SourceUnavailable>The selected source is no longer available.</XenogermPlanner.PlanSource.Errors.SourceUnavailable>
+    <XenogermPlanner.PlanSource.Errors.InvalidSource>The selected source contains invalid or missing gene data and cannot be used.</XenogermPlanner.PlanSource.Errors.InvalidSource>
+    <XenogermPlanner.PlanSource.Errors.EmptySource>The selected source contains no genes that can be used.</XenogermPlanner.PlanSource.Errors.EmptySource>
+    <XenogermPlanner.PlanSource.Errors.LoadFailed>The selected source could not be loaded.</XenogermPlanner.PlanSource.Errors.LoadFailed>
+</LanguageData>

@@ -19,6 +19,7 @@ namespace XenogermPlanner.UI
         internal const float GenepackTargetIconGap = XenogermPlannerStyle.Metrics.GenepackTargetGap;
 
         private const float GeneIconSize = XenogermPlannerStyle.Metrics.GeneIconSize;
+        private const float CollapsibleSectionIconSize = 18f;
         private const float GeneIconGap = XenogermPlannerStyle.Metrics.GeneIconGap;
         private const float ReadinessOptionGap = 24f;
         private const float ReadinessRadioPadding = 30f;
@@ -42,6 +43,47 @@ namespace XenogermPlanner.UI
         private const float BiostatSummaryRowHeight = 22f;
         internal const float LabeledBiostatSummaryHeight = BiostatSummaryRowHeight * 3f;
         internal const float CompactBiostatSummaryWidth = 156f;
+
+        internal static bool DrawCollapsibleSectionRow(
+            Rect rect,
+            string label,
+            bool expanded,
+            int rowIndex,
+            bool enabled = true)
+        {
+            if (label == null)
+                throw new ArgumentNullException(nameof(label));
+
+            using (ImGuiStateScope.Capture())
+            {
+                RimWorldUiWidgets.DrawSelectableRowBackground(
+                    rect,
+                    rowIndex,
+                    selected: false,
+                    hovered: Mouse.IsOver(rect),
+                    drawAccent: false);
+
+                var iconRect = new Rect(
+                    rect.x,
+                    rect.y + (rect.height - CollapsibleSectionIconSize) * 0.5f,
+                    CollapsibleSectionIconSize,
+                    CollapsibleSectionIconSize);
+
+                var labelRect = new Rect(
+                    iconRect.xMax + RimWorldUiStyle.Metrics.SmallGap,
+                    rect.y,
+                    Mathf.Max(0f, rect.xMax - iconRect.xMax - RimWorldUiStyle.Metrics.SmallGap),
+                    rect.height);
+
+                RimWorldUiWidgets.DrawIcon(iconRect, expanded ? TexButton.Collapse : TexButton.Reveal);
+
+                Text.Font = GameFont.Small;
+                Text.Anchor = TextAnchor.MiddleLeft;
+                Widgets.Label(labelRect, label);
+
+                return enabled && Event.current.button == 0 && Widgets.ButtonInvisible(rect);
+            }
+        }
 
         internal static Color GetReadinessStatusColor(PlanReadinessStatus status)
         {

@@ -4,7 +4,9 @@
     <XenogermPlanner.Planner.DetailsTitle>Сведения о плане «{0}»</XenogermPlanner.Planner.DetailsTitle>
     <XenogermPlanner.Planner.EmptyDetailsTitle>Сведения о плане</XenogermPlanner.Planner.EmptyDetailsTitle>
     <XenogermPlanner.Planner.CreatePlan>Создать</XenogermPlanner.Planner.CreatePlan>
-    <XenogermPlanner.Planner.ImportPlan>Импортировать сохранённое ксеносемя</XenogermPlanner.Planner.ImportPlan>
+    <XenogermPlanner.PlanCreation.FromScratch>С нуля</XenogermPlanner.PlanCreation.FromScratch>
+    <XenogermPlanner.PlanCreation.FromXenogermTemplate>Из шаблона ксеносемени</XenogermPlanner.PlanCreation.FromXenogermTemplate>
+    <XenogermPlanner.PlanCreation.FromXenotype>Из ксенотипа</XenogermPlanner.PlanCreation.FromXenotype>
     <XenogermPlanner.Planner.RefreshDescription>Повторно проверить генные пакеты на текущей карте и обновить статус плана.</XenogermPlanner.Planner.RefreshDescription>
     <XenogermPlanner.Planner.Locate>Найти</XenogermPlanner.Planner.Locate>
     <XenogermPlanner.Planner.TargetNavigationHint>Наведите курсор, чтобы подсветить цель на карте. Нажмите, чтобы перейти к ней.</XenogermPlanner.Planner.TargetNavigationHint>
@@ -137,20 +139,6 @@
 
     <XenogermPlanner.PlanEditor.DegradedTargetWarning>Некоторые гены в этом плане недоступны с текущим набором модов. Изменение выбранных генов удалит недоступные гены из плана.</XenogermPlanner.PlanEditor.DegradedTargetWarning>
     <XenogermPlanner.PlanEditor.DegradedTargetChangeConfirmation>Изменение выбранных генов навсегда удалит недоступные гены из этого плана. Продолжить?</XenogermPlanner.PlanEditor.DegradedTargetChangeConfirmation>
-
-    <XenogermPlanner.PlanImport.Title>Импорт сохранённого ксеносемени</XenogermPlanner.PlanImport.Title>
-    <XenogermPlanner.PlanImport.SourcesTitle>Сохранённые ксеносемена</XenogermPlanner.PlanImport.SourcesTitle>
-    <XenogermPlanner.PlanImport.PreviewTitle>Предварительный просмотр импорта</XenogermPlanner.PlanImport.PreviewTitle>
-    <XenogermPlanner.PlanImport.EmptySources>Нет сохранённых ксеносемян, доступных для импорта.</XenogermPlanner.PlanImport.EmptySources>
-    <XenogermPlanner.PlanImport.NoSelectedSource>Выберите сохранённое ксеносемя, чтобы просмотреть его гены.</XenogermPlanner.PlanImport.NoSelectedSource>
-    <XenogermPlanner.PlanImport.UnnamedSource>Безымянное ксеносемя</XenogermPlanner.PlanImport.UnnamedSource>
-    <XenogermPlanner.PlanImport.InvalidSourceMarker>Нельзя импортировать</XenogermPlanner.PlanImport.InvalidSourceMarker>
-    <XenogermPlanner.PlanImport.InvalidSource>Это ксеносемя содержит недопустимые или отсутствующие данные генов и не может быть импортировано.</XenogermPlanner.PlanImport.InvalidSource>
-    <XenogermPlanner.PlanImport.EmptySource>Это ксеносемя не содержит генов, доступных для импорта.</XenogermPlanner.PlanImport.EmptySource>
-    <XenogermPlanner.PlanImport.SourceUnavailable>Выбранное ксеносемя больше недоступно. Список обновлён.</XenogermPlanner.PlanImport.SourceUnavailable>
-    <XenogermPlanner.PlanImport.ReadinessMode>Цель</XenogermPlanner.PlanImport.ReadinessMode>
-    <XenogermPlanner.PlanImport.Import>Импортировать</XenogermPlanner.PlanImport.Import>
-    <XenogermPlanner.PlanImport.Cancel>Отмена</XenogermPlanner.PlanImport.Cancel>
 
     <XenogermPlanner.ReadinessMode.Coverage>Все запланированные гены</XenogermPlanner.ReadinessMode.Coverage>
     <XenogermPlanner.ReadinessMode.CoverageDescription>План готов, когда доступен каждый запланированный ген.&#10;&#10;Генные пакеты могут содержать дополнительные гены.</XenogermPlanner.ReadinessMode.CoverageDescription>

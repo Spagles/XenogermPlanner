@@ -17,6 +17,7 @@ src/XenogermPlanner.Local.props
 
 # Local and release-only documentation
 docs/local/
+docs/release/
 
 # Deployed mod assemblies
 mod/Assemblies/

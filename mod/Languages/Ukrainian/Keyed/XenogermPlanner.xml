@@ -4,7 +4,9 @@
     <XenogermPlanner.Planner.DetailsTitle>Відомості про план «{0}»</XenogermPlanner.Planner.DetailsTitle>
     <XenogermPlanner.Planner.EmptyDetailsTitle>Відомості про план</XenogermPlanner.Planner.EmptyDetailsTitle>
     <XenogermPlanner.Planner.CreatePlan>Створити</XenogermPlanner.Planner.CreatePlan>
-    <XenogermPlanner.Planner.ImportPlan>Імпортувати збережений ксенозародок</XenogermPlanner.Planner.ImportPlan>
+    <XenogermPlanner.PlanCreation.FromScratch>З нуля</XenogermPlanner.PlanCreation.FromScratch>
+    <XenogermPlanner.PlanCreation.FromXenogermTemplate>Із шаблону ксенозародка</XenogermPlanner.PlanCreation.FromXenogermTemplate>
+    <XenogermPlanner.PlanCreation.FromXenotype>Із ксенотипу</XenogermPlanner.PlanCreation.FromXenotype>
     <XenogermPlanner.Planner.RefreshDescription>Повторно перевірити генопаки на поточній мапі й оновити стан плану.</XenogermPlanner.Planner.RefreshDescription>
     <XenogermPlanner.Planner.Locate>Знайти</XenogermPlanner.Planner.Locate>
     <XenogermPlanner.Planner.TargetNavigationHint>Наведіть курсор, щоб підсвітити ціль на мапі. Натисніть, щоб перейти до неї.</XenogermPlanner.Planner.TargetNavigationHint>
@@ -137,20 +139,6 @@
 
     <XenogermPlanner.PlanEditor.DegradedTargetWarning>Деякі гени в цьому плані недоступні з поточним набором модів. Змінення вибраних генів видалить недоступні гени з плану.</XenogermPlanner.PlanEditor.DegradedTargetWarning>
     <XenogermPlanner.PlanEditor.DegradedTargetChangeConfirmation>Змінення вибраних генів назавжди видалить недоступні гени з цього плану. Продовжити?</XenogermPlanner.PlanEditor.DegradedTargetChangeConfirmation>
-
-    <XenogermPlanner.PlanImport.Title>Імпорт збереженого ксенозародка</XenogermPlanner.PlanImport.Title>
-    <XenogermPlanner.PlanImport.SourcesTitle>Збережені ксенозародки</XenogermPlanner.PlanImport.SourcesTitle>
-    <XenogermPlanner.PlanImport.PreviewTitle>Попередній перегляд імпорту</XenogermPlanner.PlanImport.PreviewTitle>
-    <XenogermPlanner.PlanImport.EmptySources>Немає збережених ксенозародків, доступних для імпорту.</XenogermPlanner.PlanImport.EmptySources>
-    <XenogermPlanner.PlanImport.NoSelectedSource>Виберіть збережений ксенозародок, щоб переглянути його гени.</XenogermPlanner.PlanImport.NoSelectedSource>
-    <XenogermPlanner.PlanImport.UnnamedSource>Безіменний ксенозародок</XenogermPlanner.PlanImport.UnnamedSource>
-    <XenogermPlanner.PlanImport.InvalidSourceMarker>Неможливо імпортувати</XenogermPlanner.PlanImport.InvalidSourceMarker>
-    <XenogermPlanner.PlanImport.InvalidSource>Цей ксенозародок містить неприпустимі або відсутні дані генів і не може бути імпортований.</XenogermPlanner.PlanImport.InvalidSource>
-    <XenogermPlanner.PlanImport.EmptySource>Цей ксенозародок не містить генів, доступних для імпорту.</XenogermPlanner.PlanImport.EmptySource>
-    <XenogermPlanner.PlanImport.SourceUnavailable>Вибраний ксенозародок більше недоступний. Список оновлено.</XenogermPlanner.PlanImport.SourceUnavailable>
-    <XenogermPlanner.PlanImport.ReadinessMode>Мета</XenogermPlanner.PlanImport.ReadinessMode>
-    <XenogermPlanner.PlanImport.Import>Імпортувати</XenogermPlanner.PlanImport.Import>
-    <XenogermPlanner.PlanImport.Cancel>Скасувати</XenogermPlanner.PlanImport.Cancel>
 
     <XenogermPlanner.ReadinessMode.Coverage>Усі заплановані гени</XenogermPlanner.ReadinessMode.Coverage>
     <XenogermPlanner.ReadinessMode.CoverageDescription>План готовий, коли доступний кожен запланований ген.&#10;&#10;Генопаки можуть також містити додаткові гени.</XenogermPlanner.ReadinessMode.CoverageDescription>

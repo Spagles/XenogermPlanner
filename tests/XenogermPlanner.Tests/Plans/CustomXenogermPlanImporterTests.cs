@@ -55,33 +55,6 @@ namespace XenogermPlanner.Tests.Plans
         }
 
         [Test]
-        public void ImportedPlans_WithSameSourceName_AreAllocatedUniquelyByDestination()
-        {
-            GeneDef gene = PlanTestData.CreateGene("GeneA");
-            CustomXenogerm firstSource = PlanTestData.CreateCustomXenogerm(
-                "Template",
-                PlanTestData.CreateGeneSet(gene));
-            CustomXenogerm secondSource = PlanTestData.CreateCustomXenogerm(
-                "Template",
-                PlanTestData.CreateGeneSet(gene));
-
-            CustomXenogermPlanImporter.TryReadSource(firstSource, out CustomXenogermPlanImportData firstImport, out _);
-            CustomXenogermPlanImporter.TryReadSource(
-                secondSource,
-                out CustomXenogermPlanImportData secondImport,
-                out _);
-
-            var component = new XenogermPlanGameComponent(null);
-            var firstPlan = new XenogermPlan(firstImport.Name, firstImport.DesiredGenes, PlanReadinessMode.Coverage);
-            var secondPlan = new XenogermPlan(secondImport.Name, secondImport.DesiredGenes, PlanReadinessMode.Coverage);
-
-            component.AddPlanWithAllocatedName(firstPlan);
-            component.AddPlanWithAllocatedName(secondPlan);
-
-            Assert.That(component.Plans.Select(plan => plan.Name), Is.EqualTo(new[] { "Template", "Template 2" }));
-        }
-
-        [Test]
         public void TryReadSource_PreservesConflictingGenesAcrossGeneSets()
         {
             GeneDef first = PlanTestData.CreateGene("First");
@@ -126,34 +99,8 @@ namespace XenogermPlanner.Tests.Plans
                 Is.EquivalentTo(new[] { "GeneA", "GeneB" }));
         }
 
-        [TestCase(PlanReadinessMode.Coverage)]
-        [TestCase(PlanReadinessMode.ExactPayload)]
-        public void ImportedPlan_PreservesImportDataAndSelectedReadinessMode(PlanReadinessMode readinessMode)
-        {
-            GeneDef geneA = PlanTestData.CreateGene("GeneA");
-            GeneDef geneB = PlanTestData.CreateGene("GeneB");
-            CustomXenogerm source = PlanTestData.CreateCustomXenogerm(
-                "Template",
-                PlanTestData.CreateGeneSet(geneA, geneB));
-
-            bool imported = CustomXenogermPlanImporter.TryReadSource(
-                source,
-                out CustomXenogermPlanImportData importData,
-                out CustomXenogermPlanImportFailure failure);
-
-            var plan = new XenogermPlan(importData.Name, importData.DesiredGenes, readinessMode);
-
-            Assert.That(imported, Is.True);
-            Assert.That(failure, Is.EqualTo(CustomXenogermPlanImportFailure.None));
-            Assert.That(plan.Id, Is.Not.Null.And.Not.Empty);
-            Assert.That(plan.Name, Is.EqualTo("Template"));
-            Assert.That(plan.DesiredGenes.Select(gene => gene.defName), Is.EquivalentTo(new[] { "GeneA", "GeneB" }));
-            Assert.That(plan.IsDegraded, Is.False);
-            Assert.That(plan.ReadinessMode, Is.EqualTo(readinessMode));
-        }
-
         [Test]
-        public void ImportedPlan_RemainsIndependentAfterSourceReplacementAndRemoval()
+        public void TryReadSource_DataRemainsIndependentAfterSourceReplacementAndRemoval()
         {
             GeneDef geneA = PlanTestData.CreateGene("GeneA");
             GeneDef geneB = PlanTestData.CreateGene("GeneB");
@@ -174,51 +121,21 @@ namespace XenogermPlanner.Tests.Plans
                 out CustomXenogermPlanImportData importData,
                 out CustomXenogermPlanImportFailure failure);
 
-            var plan = new XenogermPlan(importData.Name, importData.DesiredGenes, PlanReadinessMode.Coverage);
-
             runtimeSources[0] = replacement;
 
             Assert.That(imported, Is.True);
             Assert.That(failure, Is.EqualTo(CustomXenogermPlanImportFailure.None));
-            Assert.That(plan.Name, Is.EqualTo("Template"));
-            Assert.That(plan.DesiredGenes.Select(gene => gene.defName), Is.EquivalentTo(new[] { "GeneA", "GeneB" }));
+            Assert.That(importData.Name, Is.EqualTo("Template"));
+            Assert.That(
+                importData.DesiredGenes.Select(gene => gene.defName),
+                Is.EquivalentTo(new[] { "GeneA", "GeneB" }));
 
             runtimeSources.Clear();
 
-            Assert.That(plan.Name, Is.EqualTo("Template"));
-            Assert.That(plan.DesiredGenes.Select(gene => gene.defName), Is.EquivalentTo(new[] { "GeneA", "GeneB" }));
-        }
-
-        [Test]
-        public void ImportedPlanEditing_DoesNotMutateSource()
-        {
-            GeneDef geneA = PlanTestData.CreateGene("GeneA");
-            GeneDef geneB = PlanTestData.CreateGene("GeneB");
-            GeneDef geneC = PlanTestData.CreateGene("GeneC");
-            CustomXenogerm source = PlanTestData.CreateCustomXenogerm(
-                "Template",
-                PlanTestData.CreateGeneSet(geneA, geneB));
-
-            bool imported = CustomXenogermPlanImporter.TryReadSource(
-                source,
-                out CustomXenogermPlanImportData importData,
-                out CustomXenogermPlanImportFailure failure);
-
-            var plan = new XenogermPlan(importData.Name, importData.DesiredGenes, PlanReadinessMode.Coverage);
-
-            plan.RemoveDesiredGene(geneA);
-            plan.AddDesiredGene(geneC);
-            plan.Rename("Edited");
-            plan.ChangeReadinessMode(PlanReadinessMode.ExactPayload);
-
-            Assert.That(imported, Is.True);
-            Assert.That(failure, Is.EqualTo(CustomXenogermPlanImportFailure.None));
-            Assert.That(plan.Name, Is.EqualTo("Edited"));
-            Assert.That(plan.DesiredGenes.Select(gene => gene.defName), Is.EquivalentTo(new[] { "GeneB", "GeneC" }));
-            Assert.That(plan.ReadinessMode, Is.EqualTo(PlanReadinessMode.ExactPayload));
-
-            Assert.That(source.name, Is.EqualTo("Template"));
-            Assert.That(GetSourceGeneDefNames(source), Is.EquivalentTo(new[] { "GeneA", "GeneB" }));
+            Assert.That(importData.Name, Is.EqualTo("Template"));
+            Assert.That(
+                importData.DesiredGenes.Select(gene => gene.defName),
+                Is.EquivalentTo(new[] { "GeneA", "GeneB" }));
         }
 
         [Test]
@@ -306,11 +223,6 @@ namespace XenogermPlanner.Tests.Plans
             CustomXenogerm source = PlanTestData.CreateCustomXenogerm("Template", geneSet);
 
             AssertImportFailure(source, CustomXenogermPlanImportFailure.InvalidSourceData);
-        }
-
-        private static IEnumerable<string> GetSourceGeneDefNames(CustomXenogerm source)
-        {
-            return source.genesets.SelectMany(geneSet => geneSet.GenesListForReading).Select(gene => gene.defName);
         }
 
         private static void AssertImportFailure(CustomXenogerm source, CustomXenogermPlanImportFailure expectedFailure)

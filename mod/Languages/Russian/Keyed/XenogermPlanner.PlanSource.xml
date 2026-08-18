@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <XenogermPlanner.PlanSource.Sources>Источники</XenogermPlanner.PlanSource.Sources>
+    <XenogermPlanner.PlanSource.GeneCount>Генов: {0}</XenogermPlanner.PlanSource.GeneCount>
+    <XenogermPlanner.PlanSource.CannotUse>Нельзя использовать</XenogermPlanner.PlanSource.CannotUse>
+    <XenogermPlanner.PlanSource.NoSelection>Выберите источник, чтобы просмотреть его гены.</XenogermPlanner.PlanSource.NoSelection>
+    <XenogermPlanner.PlanSource.Loading>Загрузка источника...</XenogermPlanner.PlanSource.Loading>
+    <XenogermPlanner.PlanSource.PreviewUnavailable>Предварительный просмотр пока недоступен. Выберите источник ещё раз, чтобы повторить попытку.</XenogermPlanner.PlanSource.PreviewUnavailable>
+    <XenogermPlanner.PlanSource.Continue>Продолжить</XenogermPlanner.PlanSource.Continue>
+    <XenogermPlanner.PlanSource.Cancel>Отмена</XenogermPlanner.PlanSource.Cancel>
+
+    <XenogermPlanner.PlanSource.XenogermTemplate.Title>Создать из шаблона ксеносемени</XenogermPlanner.PlanSource.XenogermTemplate.Title>
+    <XenogermPlanner.PlanSource.XenogermTemplate.EmptySources>Нет доступных шаблонов ксеносемени.</XenogermPlanner.PlanSource.XenogermTemplate.EmptySources>
+    <XenogermPlanner.PlanSource.XenogermTemplate.UnnamedSource>Безымянный шаблон ксеносемени</XenogermPlanner.PlanSource.XenogermTemplate.UnnamedSource>
+
+    <XenogermPlanner.PlanSource.Xenotype.Title>Создать из ксенотипа</XenogermPlanner.PlanSource.Xenotype.Title>
+    <XenogermPlanner.PlanSource.Xenotype.EmptySources>Нет доступных предустановленных или сохранённых ксенотипов.</XenogermPlanner.PlanSource.Xenotype.EmptySources>
+    <XenogermPlanner.PlanSource.Xenotype.PremadeGroup>Предустановленные ксенотипы</XenogermPlanner.PlanSource.Xenotype.PremadeGroup>
+    <XenogermPlanner.PlanSource.Xenotype.SavedGroup>Сохранённые ксенотипы</XenogermPlanner.PlanSource.Xenotype.SavedGroup>
+    <XenogermPlanner.PlanSource.Xenotype.SavedCustom>Сохранённый пользовательский ксенотип</XenogermPlanner.PlanSource.Xenotype.SavedCustom>
+    <XenogermPlanner.PlanSource.Xenotype.UnnamedSource>Безымянный ксенотип</XenogermPlanner.PlanSource.Xenotype.UnnamedSource>
+
+    <XenogermPlanner.PlanSource.Errors.SourceUnavailable>Выбранный источник больше недоступен.</XenogermPlanner.PlanSource.Errors.SourceUnavailable>
+    <XenogermPlanner.PlanSource.Errors.InvalidSource>Выбранный источник содержит недопустимые или отсутствующие данные генов и не может быть использован.</XenogermPlanner.PlanSource.Errors.InvalidSource>
+    <XenogermPlanner.PlanSource.Errors.EmptySource>Выбранный источник не содержит генов, которые можно использовать.</XenogermPlanner.PlanSource.Errors.EmptySource>
+    <XenogermPlanner.PlanSource.Errors.LoadFailed>Не удалось загрузить выбранный источник.</XenogermPlanner.PlanSource.Errors.LoadFailed>
+</LanguageData>

@@ -4,7 +4,9 @@
     <XenogermPlanner.Planner.DetailsTitle>{0} plan details</XenogermPlanner.Planner.DetailsTitle>
     <XenogermPlanner.Planner.EmptyDetailsTitle>Plan details</XenogermPlanner.Planner.EmptyDetailsTitle>
     <XenogermPlanner.Planner.CreatePlan>Create</XenogermPlanner.Planner.CreatePlan>
-    <XenogermPlanner.Planner.ImportPlan>Import custom xenogerm</XenogermPlanner.Planner.ImportPlan>
+    <XenogermPlanner.PlanCreation.FromScratch>From scratch</XenogermPlanner.PlanCreation.FromScratch>
+    <XenogermPlanner.PlanCreation.FromXenogermTemplate>From xenogerm template</XenogermPlanner.PlanCreation.FromXenogermTemplate>
+    <XenogermPlanner.PlanCreation.FromXenotype>From xenotype</XenogermPlanner.PlanCreation.FromXenotype>
     <XenogermPlanner.Planner.RefreshDescription>Rescan genepacks on the current map and update plan status.</XenogermPlanner.Planner.RefreshDescription>
     <XenogermPlanner.Planner.Locate>Locate</XenogermPlanner.Planner.Locate>
     <XenogermPlanner.Planner.TargetNavigationHint>Hover to highlight on the map. Click to jump to this target.</XenogermPlanner.Planner.TargetNavigationHint>
@@ -137,20 +139,6 @@
 
     <XenogermPlanner.PlanEditor.DegradedTargetWarning>Some genes in this plan are not available with the current mods. Changing the selected genes will remove those unavailable genes from the plan.</XenogermPlanner.PlanEditor.DegradedTargetWarning>
     <XenogermPlanner.PlanEditor.DegradedTargetChangeConfirmation>Changing the selected genes will permanently remove unavailable genes from this plan. Continue?</XenogermPlanner.PlanEditor.DegradedTargetChangeConfirmation>
-
-    <XenogermPlanner.PlanImport.Title>Import custom xenogerm</XenogermPlanner.PlanImport.Title>
-    <XenogermPlanner.PlanImport.SourcesTitle>Custom xenogerms</XenogermPlanner.PlanImport.SourcesTitle>
-    <XenogermPlanner.PlanImport.PreviewTitle>Import preview</XenogermPlanner.PlanImport.PreviewTitle>
-    <XenogermPlanner.PlanImport.EmptySources>No custom xenogerms are available to import.</XenogermPlanner.PlanImport.EmptySources>
-    <XenogermPlanner.PlanImport.NoSelectedSource>Select a custom xenogerm to preview its genes.</XenogermPlanner.PlanImport.NoSelectedSource>
-    <XenogermPlanner.PlanImport.UnnamedSource>Unnamed custom xenogerm</XenogermPlanner.PlanImport.UnnamedSource>
-    <XenogermPlanner.PlanImport.InvalidSourceMarker>Cannot import</XenogermPlanner.PlanImport.InvalidSourceMarker>
-    <XenogermPlanner.PlanImport.InvalidSource>This custom xenogerm contains invalid or missing gene data and cannot be imported.</XenogermPlanner.PlanImport.InvalidSource>
-    <XenogermPlanner.PlanImport.EmptySource>This custom xenogerm contains no genes that can be imported.</XenogermPlanner.PlanImport.EmptySource>
-    <XenogermPlanner.PlanImport.SourceUnavailable>The selected custom xenogerm is no longer available. The list has been refreshed.</XenogermPlanner.PlanImport.SourceUnavailable>
-    <XenogermPlanner.PlanImport.ReadinessMode>Goal</XenogermPlanner.PlanImport.ReadinessMode>
-    <XenogermPlanner.PlanImport.Import>Import</XenogermPlanner.PlanImport.Import>
-    <XenogermPlanner.PlanImport.Cancel>Cancel</XenogermPlanner.PlanImport.Cancel>
 
     <XenogermPlanner.ReadinessMode.Coverage>All planned genes</XenogermPlanner.ReadinessMode.Coverage>
     <XenogermPlanner.ReadinessMode.CoverageDescription>Ready when every planned gene is available.&#10;&#10;Genepacks may also contain extra genes.</XenogermPlanner.ReadinessMode.CoverageDescription>
