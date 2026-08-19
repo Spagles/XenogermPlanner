@@ -36,20 +36,15 @@ namespace XenogermPlanner.Analysis
         internal IReadOnlyList<XenogermPlan> Evaluate(IReadOnlyCollection<GeneDef> offeredGenes)
         {
             HashSet<GeneDef> offeredGeneSet = CreateOfferedGeneSet(offeredGenes);
-            var matchingCandidates = new List<PlanCandidate>();
+            var matchingPlans = new List<XenogermPlan>();
 
-            foreach (PlanCandidate candidate in _candidates)
+            for (var index = 0; index < _candidates.Count; index++)
             {
+                PlanCandidate candidate = _candidates[index];
+
                 if (candidate.IsRelevant(offeredGeneSet))
-                    matchingCandidates.Add(candidate);
+                    matchingPlans.Add(candidate.Plan);
             }
-
-            matchingCandidates.Sort(CompareCandidates);
-
-            var matchingPlans = new List<XenogermPlan>(matchingCandidates.Count);
-
-            foreach (PlanCandidate candidate in matchingCandidates)
-                matchingPlans.Add(candidate.Plan);
 
             return matchingPlans.AsReadOnly();
         }
@@ -113,6 +108,8 @@ namespace XenogermPlanner.Analysis
                 candidates.Add(new PlanCandidate(plan, targetGenes, neededGenes));
             }
 
+            candidates.Sort(CompareCandidates);
+
             return candidates;
         }
 
@@ -162,7 +159,7 @@ namespace XenogermPlanner.Analysis
             internal string DisplayName { get; }
             internal PlanReadinessMode ReadinessMode { get; }
 
-            internal bool IsRelevant(IReadOnlyCollection<GeneDef> offeredGenes)
+            internal bool IsRelevant(HashSet<GeneDef> offeredGenes)
             {
                 if (ReadinessMode == PlanReadinessMode.ExactPayload)
                 {
