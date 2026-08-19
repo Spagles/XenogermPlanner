@@ -54,7 +54,7 @@ namespace XenogermPlanner.Plans
                 geneDefNames.Add(geneDefName);
             }
 
-            var lines = new List<string>
+            var lines = new List<string>(4 + geneDefNames.Count)
             {
                 Marker,
                 VersionPrefix + CurrentVersion.ToString(CultureInfo.InvariantCulture),
@@ -62,8 +62,11 @@ namespace XenogermPlanner.Plans
                 ReadinessModePrefix + GetReadinessModeToken(plan.ReadinessMode)
             };
 
-            foreach (string geneDefName in geneDefNames.OrderBy(name => name, StringComparer.Ordinal))
-                lines.Add(GenePrefix + Encode(geneDefName));
+            var sortedGeneDefNames = new List<string>(geneDefNames);
+            sortedGeneDefNames.Sort(StringComparer.Ordinal);
+
+            for (var index = 0; index < sortedGeneDefNames.Count; index++)
+                lines.Add(GenePrefix + Encode(sortedGeneDefNames[index]));
 
             return string.Join("\n", lines);
         }
