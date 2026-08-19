@@ -21,6 +21,7 @@ Plans are saved with your game and remain independent from vanilla xenogerm temp
 - Find pawns who may provide genes you are still missing.
 - Create vanilla xenogerm templates from ready plans.
 - Receive optional notifications when a plan becomes ready.
+- Receive advisory notifications when active orbital or visiting caravan traders offer genepacks relevant to incomplete plans.
 
 ## Planning modes
 
@@ -52,6 +53,12 @@ Planning currently covers the active map. Genepacks in caravans, on other maps, 
 See [Compatibility and known limitations](docs/compatibility.md) for the complete support policy.
 
 ## Integrations
+
+### Trader advisories
+
+Xenogerm Planner monitors supported traders on the active map and can notify you when an orbital trader or visiting trader caravan currently offers a genepack relevant to an incomplete plan.
+
+Trader offers remain advisory. They do not enter the Planner's physical product inventory and do not count toward readiness until the genepack is actually acquired and becomes available on the active map. Visiting-caravan notifications can jump to the trader pawn; orbital notifications remain text-only.
 
 ### Settlement Trade Overview
 

@@ -7,6 +7,7 @@ using XenogermPlanner.Assemblers;
 using XenogermPlanner.Donors;
 using XenogermPlanner.Plans;
 using XenogermPlanner.Templates;
+using XenogermPlanner.Trade;
 
 namespace XenogermPlanner.UI
 {
@@ -60,6 +61,75 @@ namespace XenogermPlanner.UI
         internal static string GetReadinessReadyNotificationTranslationKey()
         {
             return "XenogermPlanner.Notifications.PlanReady";
+        }
+
+        internal static string GetTraderAdvisoryNotificationMessage(
+            PlanTraderAdvisoryNotification notification,
+            string nativeTraderName)
+        {
+            if (notification == null)
+                throw new ArgumentNullException(nameof(notification));
+
+            string traderName = GetTraderAdvisoryDisplayName(notification.Source.Kind, nativeTraderName);
+            List<XenogermPlan> affectedPlans = GetTraderAdvisoryAffectedPlans(notification);
+            var planNames = new List<string>(affectedPlans.Count);
+
+            foreach (XenogermPlan plan in affectedPlans)
+                planNames.Add(GetPlanDisplayName(plan));
+
+            return GetTraderAdvisoryNotificationTranslationKey().Translate(
+                traderName,
+                notification.OfferCount,
+                string.Join(", ", planNames)).ToString();
+        }
+
+        internal static string GetTraderAdvisoryNotificationTranslationKey()
+        {
+            return "XenogermPlanner.Notifications.TraderRelevantOffers";
+        }
+
+        internal static string GetTraderAdvisoryDisplayName(PlanTraderAdvisorySourceKind kind, string nativeTraderName)
+        {
+            if (!string.IsNullOrWhiteSpace(nativeTraderName))
+                return nativeTraderName;
+
+            return GetTraderAdvisorySourceFallbackTranslationKey(kind).Translate().ToString();
+        }
+
+        internal static string GetTraderAdvisorySourceFallbackTranslationKey(PlanTraderAdvisorySourceKind kind)
+        {
+            switch (kind)
+            {
+                case PlanTraderAdvisorySourceKind.Orbital:
+                    return "XenogermPlanner.Notifications.OrbitalTrader";
+
+                case PlanTraderAdvisorySourceKind.Caravan:
+                    return "XenogermPlanner.Notifications.VisitingTrader";
+
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(kind), kind, "Unknown trader advisory source kind.");
+            }
+        }
+
+        internal static List<XenogermPlan> GetTraderAdvisoryAffectedPlans(PlanTraderAdvisoryNotification notification)
+        {
+            if (notification == null)
+                throw new ArgumentNullException(nameof(notification));
+
+            var plansById = new Dictionary<string, XenogermPlan>(StringComparer.Ordinal);
+
+            foreach (PlanTraderAdvisoryNotificationOffer offer in notification.Offers)
+            {
+                foreach (XenogermPlan plan in offer.MatchingPlans)
+                {
+                    if (!plansById.ContainsKey(plan.Id))
+                        plansById.Add(plan.Id, plan);
+                }
+            }
+
+            var affectedPlans = new List<XenogermPlan>(plansById.Values);
+            affectedPlans.Sort(ComparePlansForTraderAdvisory);
+            return affectedPlans;
         }
 
         internal static string GetAssemblerDisplayName(Building_GeneAssembler assembler)
@@ -1111,6 +1181,18 @@ namespace XenogermPlanner.UI
             }
 
             return copiedGenes;
+        }
+
+        private static int ComparePlansForTraderAdvisory(XenogermPlan left, XenogermPlan right)
+        {
+            int displayNameComparison = StringComparer.OrdinalIgnoreCase.Compare(
+                GetPlanDisplayName(left),
+                GetPlanDisplayName(right));
+
+            if (displayNameComparison != 0)
+                return displayNameComparison;
+
+            return StringComparer.Ordinal.Compare(left.Id, right.Id);
         }
 
         private static int CompareGenesByDisplayName(GeneDef left, GeneDef right)

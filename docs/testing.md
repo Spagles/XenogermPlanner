@@ -1,6 +1,7 @@
+
 # Xenogerm Planner testing policy
 
-This document defines the accepted automated testing and runtime acceptance boundaries of Xenogerm Planner. The current baseline includes the completed shared UI and layout-cache migration, tint-aware icon call-site migration, normalized primary and button assets, collection-level unique-name policy, target-gene `ExactPayloadConflict` analysis and presentation, separately versioned read-only integration API version `1`, window-owned analysis caching and the validated unified plan-creation flow. The external shared source is compiled into the Planner assembly and its ownership boundary has consumer integration coverage. Public reflection shape, DTO invariants, batch orchestration, Planner-owned relevance semantics, semantic integration, read-only API behavior, analysis-cache reuse and invalidation, source transformation and revalidation, xenotype source projection, and identity-based presentation compatibility are covered. The final SVG sources and regenerated packaged PNG textures are present under the normalized paths. The current Release build, complete NUnit suite, repeated UI profiling and final runtime regression matrix have been validated successfully.
+This document defines the accepted automated testing and runtime acceptance boundaries of Xenogerm Planner. The current baseline includes the completed shared UI and layout-cache migration, tint-aware icon call-site migration, normalized primary and button assets, collection-level unique-name policy, target-gene `ExactPayloadConflict` analysis and presentation, separately versioned read-only integration API version `1`, window-owned analysis caching, the validated unified plan-creation flow and the implemented trader advisory lifecycle. The external shared source is compiled into the Planner assembly and its ownership boundary has consumer integration coverage. Public reflection shape, DTO invariants, batch orchestration, Planner-owned relevance semantics, semantic integration, read-only API behavior, analysis-cache reuse and invalidation, source transformation and revalidation, xenotype source projection, trader current-stock transformation, reference-identity reconciliation, notification deduplication, delivery gating and cross-subsystem regression boundaries are covered. The final SVG sources and regenerated packaged PNG textures are present under the normalized paths. The current Release build, complete NUnit suite, repeated UI profiling and runtime regression validation, including trader advisory runtime scenarios, have been validated successfully.
 
 It is a testing policy, not a product architecture specification or vanilla implementation reference.
 
@@ -116,6 +117,23 @@ Examples include:
 * immediate analysis-cache rebuild after plan, inventory, map or assembler identity changes;
 * bounded donor, selectable-assembler and assembler live-state refresh;
 * complete analysis-cache invalidation on the explicit window lifecycle boundary.
+
+Trader advisory automated lifecycle coverage protects the following project-owned contracts:
+
+* 60-game-tick trader discovery/stock polling without coupling correctness to a vanilla arrival event;
+* silent first determinate baseline after component initialization, save load and active-map change, with current relevance pairs acknowledged without delivery;
+* unavailable game/map/Planner context not initializing or advancing that baseline;
+* active-map changes discarding prior transient trader-source and delivery state;
+* reference-identity reconciliation for concrete `TradeShip`, caravan trader `Pawn` and physical `Genepack` objects;
+* delivery deduplication by trader-source lifetime, exact `Genepack` reference and stable plan ID;
+* a baseline-acknowledged or successfully delivered pair remaining suppressed after temporary relevance loss and regain during the same source lifetime;
+* disappearing trader sources releasing their transient delivery state so a later concrete source starts a new lifetime;
+* one reconciliation aggregating newly deliverable pairs into at most one notification per trader;
+* `ITrader.CanTradeNow` gating delivery without changing discovery or relevance classification;
+* newly observed post-baseline pairs remaining pending while `CanTradeNow` is false, becoming deliverable when it later becomes true if still current and relevant, and being removed from pending state when no longer current/relevant;
+* plan mutation or product-inventory snapshot identity change reevaluating current known offers without requiring another trader discovery scan;
+* trader advisory state remaining non-persisted and separate from `XenogermPlan`, product inventory and readiness notification cursors;
+* trader relevance reusing the same Planner-owned Coverage/Exact-payload semantics as public API version `1` without a parallel algorithm.
 
 The test should target the project-owned transition contract rather than the existence of individual methods.
 
@@ -283,9 +301,23 @@ This includes:
 * unchanged open-window analysis reuse across Overview, Gene assembler and Gene effects scenarios;
 * repeated Plan Editor selected-gene removal, including the final visible rows, without `ArgumentOutOfRangeException` or an unbalanced scroll-view mouse-position stack.
 
+Trader advisory runtime acceptance covers:
+
+* orbital trader arrival, generated-stock discovery through current `Map.passingShipManager.passingShips`, departure and source cleanup;
+* visiting trader caravan arrival, trader-pawn resolution through `LordJob_TradeWithColony` / `TraderCaravanUtility.FindTrader`, departure and source cleanup;
+* trade-stock mutation after an actual trade becoming visible through a later current-state refresh;
+* save/load with an already present trader establishing a silent baseline rather than producing a retroactive notification;
+* switching away from and back to a map establishing the accepted per-active-map silent baseline;
+* a newly relevant post-baseline offer observed while `ITrader.CanTradeNow` is false remaining undelivered until the trader becomes tradeable, when still current and relevant;
+* standard localized non-historical `PositiveEvent` presentation with aggregation of new relevant pairs per trader;
+* visiting-caravan notification navigation to the exact current trader pawn through the shared target-interaction boundary;
+* orbital notifications remaining text-only rather than opening an unverified communications or trade UI path;
+* no trader offer entering the physical product inventory, changing `PlanReadinessResult`, mutating `XenogermPlan` or altering existing readiness-notification cursors;
+* failures for one trader source not preventing other trader evaluation, plan persistence, existing readiness notifications or core Planner access.
+
 Runtime acceptance should verify the visible or integration behavior that cannot be established reliably through project-owned deterministic logic alone.
 
-The completed current-build acceptance verified the migrated shared UI boundary, tint-aware icon call sites, normalized source and packaged asset paths, unique-name workflows, target-gene `ExactPayloadConflict` behavior, English/Russian/Ukrainian presentation, API version `1`, window analysis-cache lifecycle, the Plan Editor selected-gene removal regression and the unified creation flow. The current Release build and complete NUnit suite passed successfully, including source transformation, source-list projection, template-source provider, xenotype-source provider, editor-initial-state, API, semantic integration, analysis-cache and projection-cache fixtures. The final runtime regression matrix verified the common source selector, premade/saved xenotype grouping, native saved-xenotype loading, editable transition into the Plan Editor, source-selector scroll/collapse safety and continued correctness of existing create/edit/duplicate/paste workflows. Consumer integration tests prove that shared types are compiled into `XenogermPlanner.dll`, while API surface tests prove that no separate runtime DTO assembly is required. Repeated runtime profiling confirmed that the tested open-window scenarios no longer exhibit a persistent Planner-specific regression; those measurements are diagnostic evidence rather than a universal frame-rate guarantee.
+The completed current-build acceptance verified the migrated shared UI boundary, tint-aware icon call sites, normalized source and packaged asset paths, unique-name workflows, target-gene `ExactPayloadConflict` behavior, English/Russian/Ukrainian presentation, API version `1`, window analysis-cache lifecycle, the Plan Editor selected-gene removal regression, the unified creation flow and the trader advisory lifecycle. The current Release build and complete NUnit suite passed successfully, including source transformation, source-list projection, template-source provider, xenotype-source provider, editor-initial-state, API, semantic integration, analysis-cache, projection-cache, trader stock scanner, trader lifecycle, notification tracker and trader cross-subsystem regression fixtures. Runtime validation completed without identified problems and covered the accepted trader advisory behavior alongside the existing creation, readiness, notification, integration and UI regression matrix. Consumer integration tests prove that shared types are compiled into `XenogermPlanner.dll`, while API surface tests prove that no separate runtime DTO assembly is required. Repeated runtime profiling confirmed that the tested open-window scenarios no longer exhibit a persistent Planner-specific regression; those measurements are diagnostic evidence rather than a universal frame-rate guarantee.
 
 ## Regression tests
 

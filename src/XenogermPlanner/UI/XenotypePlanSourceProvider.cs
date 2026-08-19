@@ -247,9 +247,7 @@ namespace XenogermPlanner.UI
             onResolved(ReadPremadeSource(source));
         }
 
-        private void ResolveSavedSource(
-            SavedSourceToken token,
-            Action<XenogermPlanSourceResolveResult> onResolved)
+        private void ResolveSavedSource(SavedSourceToken token, Action<XenogermPlanSourceResolveResult> onResolved)
         {
             if (!TryGetCurrentFile(token.Path, out FileInfo file))
             {

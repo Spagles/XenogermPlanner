@@ -33,6 +33,9 @@
     <XenogermPlanner.Notifications.ReadinessEnabled>Уведомить, когда план будет готов</XenogermPlanner.Notifications.ReadinessEnabled>
     <XenogermPlanner.Notifications.ReadinessEnabledDescription>Показывать сообщение, когда этот план станет готовым. Повторное сообщение может появиться после того, как план снова станет неготовым, а затем будет завершён ещё раз.</XenogermPlanner.Notifications.ReadinessEnabledDescription>
     <XenogermPlanner.Notifications.PlanReady>План ксеносемени «{0}» готов.</XenogermPlanner.Notifications.PlanReady>
+    <XenogermPlanner.Notifications.TraderRelevantOffers>Торговец «{0}»: релевантных генных пакетов — {1}. Планы: {2}.</XenogermPlanner.Notifications.TraderRelevantOffers>
+    <XenogermPlanner.Notifications.OrbitalTrader>Орбитальный торговец</XenogermPlanner.Notifications.OrbitalTrader>
+    <XenogermPlanner.Notifications.VisitingTrader>Торговец каравана</XenogermPlanner.Notifications.VisitingTrader>
 
     <XenogermPlanner.Planner.DesiredGenes>Запланированные гены</XenogermPlanner.Planner.DesiredGenes>
     <XenogermPlanner.Planner.DesiredGeneCount>Запланированные гены: {0}</XenogermPlanner.Planner.DesiredGeneCount>

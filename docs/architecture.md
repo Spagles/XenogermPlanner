@@ -1,8 +1,9 @@
+
 # Xenogerm Planner architecture
 
 This document defines the accepted product architecture and implementation boundaries of Xenogerm Planner.
 
-The current implementation contains the complete validated released baseline and an additional validated development baseline for the unified plan-creation flow targeted at version `1.1.0`. Planning, readiness, assembler, donor, notification, template generation, localization, optional integration and the accepted UI architecture remain implemented. New-plan creation is now unified behind `Create`: from scratch, from a runtime xenogerm template, or from a premade or saved xenotype, with every branch passing through the existing Plan Editor before a new independent `XenogermPlan` is saved. The Planner uses the external compile-time shared UI source for canonical generic controls, layouts, IMGUI state handling, variable-height layout caching and consumer-neutral icon tint application, with assembly ownership covered by integration tests. Display names follow the collection-level unique-name policy, and Exact payload readiness exposes target-gene `ExactPayloadConflict` diagnostics without changing the high-level readiness state machine. The separately versioned read-only integration API version `1`, its Planner-owned relevance query, public contract coverage and external integration guide are implemented and consumed optionally by Settlement Trade Overview. Window-owned transient analysis caching prevents repeated readiness and target analysis on unchanged IMGUI events, donor and assembler analysis is resolved lazily for the active tab with bounded live-state refresh, and presentation caches use stable identity keys. English, Russian and Ukrainian resources, the current Release build, complete NUnit suite, performance profiling and final runtime regression matrix have been validated successfully. Trader relevance notifications remain future development work and are not treated as current product behavior.
+The current implementation contains the complete validated released baseline and a release-ready development baseline targeted at version `1.1.0`. Planning, readiness, assembler, donor, product-readiness notifications, template generation, localization, optional integration and the accepted UI architecture remain implemented. New-plan creation is unified behind `Create`: from scratch, from a runtime xenogerm template, or from a premade or saved xenotype, with every branch passing through the existing Plan Editor before a new independent `XenogermPlan` is saved. The Planner uses the external compile-time shared UI source for canonical generic controls, layouts, IMGUI state handling, variable-height layout caching and consumer-neutral icon tint application, with assembly ownership covered by integration tests. Display names follow the collection-level unique-name policy, and Exact payload readiness exposes target-gene `ExactPayloadConflict` diagnostics without changing the high-level readiness state machine. The separately versioned read-only integration API version `1`, its Planner-owned relevance query, public contract coverage and external integration guide are implemented and consumed optionally by Settlement Trade Overview. Built-in trader advisory now analyzes current active-map orbital and visiting-caravan genepack offers through the same Planner-owned relevance semantics, maintains a transient source-lifetime notification ledger and delivers aggregated advisory `PositiveEvent` messages without changing product inventory or readiness. Window-owned transient analysis caching prevents repeated readiness and target analysis on unchanged IMGUI events, donor and assembler analysis is resolved lazily for the active tab with bounded live-state refresh, and presentation caches use stable identity keys. English, Russian and Ukrainian resources, the current Release build, complete NUnit suite, performance profiling and runtime regression validation, including the trader advisory lifecycle, have been validated successfully.
 
 It is an architecture specification, not an implementation guide or a vanilla implementation reference.
 
@@ -1531,15 +1532,79 @@ potential pawn gene sources
 → implemented informational acquisition hints
 
 active orbital and visiting caravan trader genepack offers
-→ accepted future temporary trade hints
-→ native current-state access confirmed
+→ implemented advisory notifications
+→ native current-state polling and reconciliation
+→ transient deduplicated delivery lifecycle
 ```
 
 No advisory source satisfies missing plan requirements or changes a plan from not ready to ready. Trader stock remains outside physical product inventory; `PassingShip` stock is specifically excluded even though generic map-holder traversal can discover it.
 
-For future trader advisory analysis, the confirmed native current-state boundaries are active `TradeShip` instances from `Map.passingShipManager.passingShips` and visiting trader caravans from `Map.lordManager.lords` with `LordJob_TradeWithColony` and `TraderCaravanUtility.FindTrader`. Concrete current stock is read through `ITrader.Goods`, and concrete `Genepack` composition is read through its native `GeneSet` boundary.
+The implemented trader advisory uses the confirmed native current-state boundaries: active `TradeShip` instances from `Map.passingShipManager.passingShips` and visiting trader caravans from `Map.lordManager.lords` with `LordJob_TradeWithColony` and `TraderCaravanUtility.FindTrader`. Concrete current stock is read through `ITrader.Goods`, and concrete `Genepack` composition is read through its native `GeneSet` boundary.
 
-The confirmed lifecycle result does not provide one suitable public stock-ready arrival event for both supported trader branches. Future implementation therefore uses Planner-owned refresh/reconciliation over current native state rather than requiring lifecycle patching. Exact refresh cadence, reconciliation triggers, deduplication and notification-state behavior remain future implementation decisions.
+The confirmed lifecycle result does not provide one suitable public stock-ready arrival event for both supported trader branches. The implemented trader advisory therefore uses Planner-owned current-state refresh and reconciliation rather than lifecycle patching.
+
+### Trader advisory refresh, reconciliation and notification lifecycle
+
+Trader advisory state belongs to a dedicated Planner-owned game-level runtime component. It remains separate from `XenogermPlan`, `PlanGenepackInventorySnapshot`, `PlanReadinessResult`, assembler readiness and the existing product-readiness notification cursor. The component owns only derived current-map trader advisory state and delivery bookkeeping for active trader-source lifetimes.
+
+The implemented runtime boundary is:
+
+```text
+current active Map
+        ↓
+supported current ITrader sources
+        ↓
+current concrete Genepack offers
+        ↓
+transient trader advisory snapshot
+        +
+current XenogermPlans
+        +
+current product-inventory snapshot
+        ↓
+Planner-owned relevance semantics
+        ↓
+reconciliation + transient notification ledger
+        ↓
+optional advisory PositiveEvent message
+```
+
+Trader discovery and stock refresh use a 60-game-tick polling cadence. The polling boundary discovers the supported traders from current native map state and reads their current concrete `ITrader.Goods`. This cadence is intentionally independent from the 600-tick product-inventory fallback refresh because trader stock is temporary advisory state and notification usefulness requires a more responsive current-state check.
+
+A plan mutation or a change in current product-inventory snapshot identity invalidates trader relevance analysis immediately. The current known trader offers may then be reevaluated without waiting for the next trader discovery/stock poll. Stock appearance, disappearance and mutation that have no common reliable public lifecycle event are detected by the periodic trader poll.
+
+The active map is part of the advisory lifecycle identity. When the active map changes, all transient trader advisory and delivery state is discarded and the newly active map starts a new baseline lifecycle. Trader activity that occurred while another map was active does not generate retroactive notifications when the map later becomes active.
+
+The first determinate reconciliation after component initialization, save load or active-map change establishes a silent baseline. Existing traders and offers are recorded, and every relevance pair that exists in that baseline is marked acknowledged without delivering a message. An unavailable game, map or required Planner analysis context does not establish or advance that baseline. No trader advisory stock, relevance result or notification ledger is persisted across save/load.
+
+Runtime identity uses exact object identity:
+
+* an orbital trader source is the concrete active `TradeShip`;
+* a visiting caravan source is the concrete trader `Pawn` resolved through `TraderCaravanUtility.FindTrader`;
+* an offered item is the concrete `Genepack`;
+* plan identity remains the stable `XenogermPlan` ID.
+
+The delivery-deduplication unit is:
+
+```text
+trader source lifetime
++ exact Genepack reference
++ XenogermPlan stable ID
+```
+
+An acknowledged relevance pair is not delivered during the same concrete trader-source lifetime even if it temporarily becomes irrelevant and later relevant again. A pair becomes acknowledged either because it belonged to the silent baseline or because a notification containing it was successfully delivered. Renaming the plan does not change the pair identity. A new plan ID, a new physical `Genepack`, or a new trader-source lifetime can create a new deliverable pair. When a trader source disappears from current native state, its transient source state is removed completely.
+
+All newly deliverable pairs for one trader discovered during one reconciliation are aggregated into at most one notification for that trader. After successful delivery, those pairs become acknowledged. Baseline acknowledgement is separate from successful delivery so initial/load/map-change state never becomes a delayed retroactive notification.
+
+`ITrader.CanTradeNow` is a delivery gate, not a discovery or relevance rule. Current trader stock can be discovered and analyzed while `CanTradeNow` is false. A newly relevant pair first observed after the silent baseline remains pending and unacknowledged while the trader cannot trade; if it is still present and relevant when a later reconciliation observes `CanTradeNow == true`, it may then be delivered and acknowledged. A pending pair that is no longer current or relevant is removed from pending state. A later `true → false → true` transition does not re-deliver pairs already acknowledged during that source lifetime.
+
+Trader relevance reuses one Planner-owned semantic implementation shared with the existing public API version `1` behavior. The trade subsystem does not depend on `XenogermPlanner.Api.Internal` as an architectural layer and does not introduce a second Coverage/Exact-payload algorithm. The shared evaluator remains in a consumer-neutral Planner-owned analysis boundary while the public API version `1` surface and results remain unchanged.
+
+Trader notification presentation uses a localized standard non-historical `PositiveEvent` message and the existing shared Planner presentation boundary. One notification identifies the trader, summarizes the newly relevant physical genepack offers and the affected plan display names in deterministic presentation order; stable plan IDs remain the internal identity.
+
+For a visiting trader caravan, the exact trader pawn is the navigation target and uses the existing current-map target interaction boundary. An orbital `TradeShip` has no equivalent verified map target, so its implemented notification is text-only. The feature does not invent or patch a communications-console or trade-dialog navigation path solely for presentation symmetry.
+
+Failures while scanning, evaluating or delivering one trader source must be isolated so they do not block other sources, plan persistence, product readiness, the existing readiness-notification lifecycle or core Planner access. The lifecycle does not require Harmony and does not change public integration API version `1`.
 
 The main pawn donor rule is based on verified Gene Extractor output-selection semantics:
 
@@ -1561,7 +1626,7 @@ The implemented source collection contains all spawned pawns on the current acti
 
 The Planner presents donor information for resolved product-level missing genes through a sortable count control and a separate details view, with shared map indication and navigation for exact pawns.
 
-Pawn-specific architecture and UI terminology uses `potential donor`. The umbrella term `potential gene sources` is reserved for advisory source kinds that may later include temporary trade offers.
+Pawn-specific architecture and UI terminology uses `potential donor`. The umbrella term `potential gene sources` is reserved for advisory source kinds and includes the implemented trader-offer advisory boundary.
 
 ## Release support and known limitations
 
@@ -1662,6 +1727,22 @@ public API contract and semantic integration tests
         ↓
 docs/integration-api.md for API version 1
 ```
+
+The trader-advisory implementation dependency flow is complete:
+
+```text
+completed native trader current-state research
+        ↓
+accepted refresh / reconciliation / deduplication / delivery lifecycle design
+        ↓
+current supported trader-stock analysis and transient reconciliation
+        ↓
+advisory trader notification delivery
+        ↓
+automated lifecycle coverage and runtime acceptance
+```
+
+Trader stock analysis, transient reconciliation, notification delivery, automated lifecycle coverage and runtime acceptance are part of the validated `1.1.0` baseline.
 
 The generic UI migration, unique display-name policy, target-gene `ExactPayloadConflict` analysis and presentation, API implementation, optional STO consumer integration, localization audit, tint-aware icon migration, approved visual asset replacement, category-specific SVG normalization, packaged texture regeneration, analysis-cache optimization, Plan Editor mutation fix, automated regression coverage and current-build validation are complete baseline work. They are not repeated as future stages. Native or vanilla Planner genepack indicators remain excluded.
 

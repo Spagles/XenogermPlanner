@@ -10,6 +10,7 @@ using XenogermPlanner.Donors;
 using XenogermPlanner.Genes;
 using XenogermPlanner.Notifications;
 using XenogermPlanner.Plans;
+using XenogermPlanner.Trade;
 
 namespace XenogermPlanner.UI
 {
@@ -1847,6 +1848,7 @@ namespace XenogermPlanner.UI
         private void HandlePlanSaved(XenogermPlan plan)
         {
             Current.Game?.GetComponent<PlanReadinessNotificationGameComponent>()?.Invalidate();
+            Current.Game?.GetComponent<PlanTraderAdvisoryGameComponent>()?.Invalidate();
             _analysisCache.Invalidate();
             InvalidatePresentationProjections();
             InvalidateVariableHeightLayouts();
@@ -1885,6 +1887,7 @@ namespace XenogermPlanner.UI
         private void DeletePlan(XenogermPlanGameComponent component, string planId)
         {
             component.RemovePlan(planId);
+            Current.Game?.GetComponent<PlanTraderAdvisoryGameComponent>()?.Invalidate();
             InvalidatePresentationProjections();
             InvalidateVariableHeightLayouts();
 

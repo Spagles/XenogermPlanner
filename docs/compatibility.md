@@ -30,6 +30,8 @@ Xenogerm Planner integrates through standard RimWorld 1.6 and Biotech data and r
 * save-local vanilla `CustomXenogerm` templates;
 * runtime premade `XenotypeDef` entries used as plan-creation sources;
 * saved custom xenotype `.xtp` files loaded through the vanilla xenotype loading flow;
+* active orbital `TradeShip` instances exposed by the current map and their current `ITrader.Goods`;
+* visiting trader caravans exposed through current-map trade-with-colony Lords, their trader pawns and current `ITrader.Goods`;
 * RimWorld Scribe save data for mod-owned plans.
 
 The supported baseline assumes those boundaries retain their normal meaning.
@@ -100,6 +102,17 @@ Forbidden state, Gene Bank power, and connection to a Gene Assembler do not by t
 
 A selected Gene Assembler has a separate scope containing only the physical genepacks visible through its connected Gene Banks. Plan readiness and selected-assembler readiness can therefore differ.
 
+## Trader advisory scope
+
+Built-in trader advisory is limited to supported traders on the current active map:
+
+* orbital traders represented by active `TradeShip` instances;
+* visiting trader caravans represented by the exact trader pawn resolved from a current `LordJob_TradeWithColony`.
+
+Current trader stock is read from native `ITrader.Goods` state and refreshed through Planner-owned current-state polling. Relevant trader genepacks remain advisory offers: they are not added to the physical product inventory, do not make a plan ready and do not alter the persisted readiness-notification cursor.
+
+Trader advisory does not automate purchases or open an unverified orbital trade/navigation path. Visiting-caravan notifications can use the current trader pawn as a map-navigation target; orbital notifications are text-only.
+
 ## Functional limitations
 
 * A plan represents the desired physical gene payload of a xenogerm. It does not predict the final phenotype or complete active gene state of a specific pawn.
@@ -109,7 +122,7 @@ A selected Gene Assembler has a separate scope containing only the physical gene
 * Xenogerm Planner does not automate extraction, trading, assembly jobs, implantation, or pawn assignment.
 * Genepacks are not reserved between plans. Several plans may refer to the same reusable physical packs.
 * Product-level planning covers only the current active map, not the entire faction across maps and caravans.
-* Passing Ship offers and other temporary trade sources do not satisfy readiness.
+* Passing Ship offers and other supported temporary trader offers may produce advisory notifications but do not satisfy readiness.
 * Saved custom xenotype `.xtp` files can be used as plan-creation sources, but the mod does not manage or modify the global `.xtp` custom xenotype library.
 
 ## Template search limitation

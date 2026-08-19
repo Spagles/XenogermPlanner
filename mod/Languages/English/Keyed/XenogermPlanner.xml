@@ -33,6 +33,9 @@
     <XenogermPlanner.Notifications.ReadinessEnabled>Notify when this plan becomes ready</XenogermPlanner.Notifications.ReadinessEnabled>
     <XenogermPlanner.Notifications.ReadinessEnabledDescription>Send a message when this plan becomes ready. It can notify you again after the plan becomes not ready and is completed once more.</XenogermPlanner.Notifications.ReadinessEnabledDescription>
     <XenogermPlanner.Notifications.PlanReady>Xenogerm plan "{0}" is ready.</XenogermPlanner.Notifications.PlanReady>
+    <XenogermPlanner.Notifications.TraderRelevantOffers>Trader "{0}": relevant genepacks — {1}. Plans: {2}.</XenogermPlanner.Notifications.TraderRelevantOffers>
+    <XenogermPlanner.Notifications.OrbitalTrader>Orbital trader</XenogermPlanner.Notifications.OrbitalTrader>
+    <XenogermPlanner.Notifications.VisitingTrader>Visiting trader</XenogermPlanner.Notifications.VisitingTrader>
 
     <XenogermPlanner.Planner.DesiredGenes>Planned genes</XenogermPlanner.Planner.DesiredGenes>
     <XenogermPlanner.Planner.DesiredGeneCount>Planned genes: {0}</XenogermPlanner.Planner.DesiredGeneCount>

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using Escarval.RimWorld.UI;
 using NUnit.Framework;
 using RimWorld;
@@ -11,6 +12,7 @@ using XenogermPlanner.Plans;
 using XenogermPlanner.Templates;
 using XenogermPlanner.Tests.Donors;
 using XenogermPlanner.Tests.Genes;
+using XenogermPlanner.Trade;
 using XenogermPlanner.UI;
 
 namespace XenogermPlanner.Tests.UI
@@ -1099,6 +1101,61 @@ namespace XenogermPlanner.Tests.UI
                 Is.EqualTo("XenogermPlanner.Notifications.PlanReady"));
         }
 
+        [Test]
+        public void GetTraderAdvisoryNotificationTranslationKey_ReturnsNotificationKey()
+        {
+            Assert.That(
+                XenogermPlannerPresentation.GetTraderAdvisoryNotificationTranslationKey(),
+                Is.EqualTo("XenogermPlanner.Notifications.TraderRelevantOffers"));
+        }
+
+        [Test]
+        public void GetTraderAdvisorySourceFallbackTranslationKey_OrbitalUsesOrbitalTraderKey()
+        {
+            Assert.That(
+                XenogermPlannerPresentation.GetTraderAdvisorySourceFallbackTranslationKey(
+                    PlanTraderAdvisorySourceKind.Orbital),
+                Is.EqualTo("XenogermPlanner.Notifications.OrbitalTrader"));
+        }
+
+        [Test]
+        public void GetTraderAdvisorySourceFallbackTranslationKey_CaravanUsesVisitingTraderKey()
+        {
+            Assert.That(
+                XenogermPlannerPresentation.GetTraderAdvisorySourceFallbackTranslationKey(
+                    PlanTraderAdvisorySourceKind.Caravan),
+                Is.EqualTo("XenogermPlanner.Notifications.VisitingTrader"));
+        }
+
+        [Test]
+        public void GetTraderAdvisoryDisplayName_UsesCurrentNativeNameWhenAvailable()
+        {
+            string displayName = XenogermPlannerPresentation.GetTraderAdvisoryDisplayName(
+                PlanTraderAdvisorySourceKind.Orbital,
+                "Current trader name");
+
+            Assert.That(displayName, Is.EqualTo("Current trader name"));
+        }
+
+        [Test]
+        public void GetTraderAdvisoryAffectedPlans_DeduplicatesByStableIdAndOrdersByNameThenId()
+        {
+            GeneDef gene = CreateGene("Gene", "Gene");
+            XenogermPlan alphaSecond = CreatePlanWithId("id-b", "alpha", gene);
+            XenogermPlan alphaFirst = CreatePlanWithId("id-a", "Alpha", gene);
+            XenogermPlan beta = CreatePlanWithId("id-c", "Beta", gene);
+            PlanTraderAdvisoryOfferSnapshot firstOffer = CreateTraderOffer(gene);
+            PlanTraderAdvisoryOfferSnapshot secondOffer = CreateTraderOffer(gene);
+            PlanTraderAdvisoryNotification notification = CreateTraderNotification(
+                new PlanTraderAdvisoryNotificationOffer(firstOffer, new[] { alphaSecond, alphaFirst }),
+                new PlanTraderAdvisoryNotificationOffer(secondOffer, new[] { alphaSecond, beta }));
+
+            List<XenogermPlan> affectedPlans = XenogermPlannerPresentation.GetTraderAdvisoryAffectedPlans(notification);
+
+            Assert.That(affectedPlans, Is.EqualTo(new[] { alphaFirst, alphaSecond, beta }));
+            Assert.That(notification.OfferCount, Is.EqualTo(2));
+        }
+
         [TestCase(null)]
         [TestCase("")]
         [TestCase("   ")]
@@ -1189,6 +1246,38 @@ namespace XenogermPlanner.Tests.UI
             Assert.That(plan.Id, Is.EqualTo(id));
             Assert.That(plan.Name, Is.EqualTo("Named plan"));
             Assert.That(plan.HasReadinessNotificationBaseline, Is.False);
+        }
+
+        private static PlanTraderAdvisoryNotification CreateTraderNotification(
+            params PlanTraderAdvisoryNotificationOffer[] notificationOffers)
+        {
+            var sourceOffers = new List<PlanTraderAdvisoryOfferSnapshot>(notificationOffers.Length);
+
+            foreach (PlanTraderAdvisoryNotificationOffer notificationOffer in notificationOffers)
+                sourceOffers.Add(notificationOffer.Offer);
+
+            var source = new PlanTraderAdvisorySourceSnapshot(
+                CreateUninitialized<TradeShip>(),
+                PlanTraderAdvisorySourceKind.Orbital,
+                null,
+                sourceOffers);
+
+            return new PlanTraderAdvisoryNotification(source, notificationOffers);
+        }
+
+        private static PlanTraderAdvisoryOfferSnapshot CreateTraderOffer(params GeneDef[] genes)
+        {
+            return new PlanTraderAdvisoryOfferSnapshot(CreateUninitialized<Genepack>(), genes);
+        }
+
+        private static XenogermPlan CreatePlanWithId(string id, string name, params GeneDef[] genes)
+        {
+            return new XenogermPlan(id, name, genes, Array.Empty<string>(), PlanReadinessMode.Coverage);
+        }
+
+        private static T CreateUninitialized<T>() where T : class
+        {
+            return (T)FormatterServices.GetUninitializedObject(typeof(T));
         }
 
         private static PlanGenepackCompositionDiagnostic CreateExactPayloadConflictComposition(

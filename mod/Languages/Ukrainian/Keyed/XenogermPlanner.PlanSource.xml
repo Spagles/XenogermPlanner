@@ -14,7 +14,7 @@
     <XenogermPlanner.PlanSource.XenogermTemplate.UnnamedSource>Безіменний шаблон ксенозародка</XenogermPlanner.PlanSource.XenogermTemplate.UnnamedSource>
 
     <XenogermPlanner.PlanSource.Xenotype.Title>Створити із ксенотипу</XenogermPlanner.PlanSource.Xenotype.Title>
-    <XenogermPlanner.PlanSource.Xenotype.EmptySources>Немає доступних попередньо визначених або збережених ксенотипів.</XenogermPlanner.PlanSource.Xenotype.EmptySources>
+    <XenogermPlanner.PlanSource.Xenotype.EmptySources>Немає доступних готових або збережених ксенотипів.</XenogermPlanner.PlanSource.Xenotype.EmptySources>
     <XenogermPlanner.PlanSource.Xenotype.PremadeGroup>Попередньо визначені ксенотипи</XenogermPlanner.PlanSource.Xenotype.PremadeGroup>
     <XenogermPlanner.PlanSource.Xenotype.SavedGroup>Збережені ксенотипи</XenogermPlanner.PlanSource.Xenotype.SavedGroup>
     <XenogermPlanner.PlanSource.Xenotype.SavedCustom>Збережений користувацький ксенотип</XenogermPlanner.PlanSource.Xenotype.SavedCustom>
