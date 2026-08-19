@@ -106,15 +106,31 @@ namespace XenogermPlanner.Analysis
             missingGenes = new List<GeneDef>();
             geneCoverageDiagnostics = new List<PlanGeneCoverageDiagnostic>();
 
+            var compositionsByGene =
+                new Dictionary<GeneDef, List<PlanGenepackCompositionDiagnostic>>();
+
+            for (var index = 0; index < availableGenepackCompositions.Count; index++)
+            {
+                PlanGenepackCompositionDiagnostic composition = availableGenepackCompositions[index];
+
+                foreach (GeneDef gene in composition.Genes)
+                {
+                    if (!compositionsByGene.TryGetValue(gene, out List<PlanGenepackCompositionDiagnostic> matchingList))
+                    {
+                        matchingList = new List<PlanGenepackCompositionDiagnostic>();
+                        compositionsByGene.Add(gene, matchingList);
+                    }
+
+                    matchingList.Add(composition);
+                }
+            }
+
             foreach (GeneDef desiredGene in desiredGenes)
             {
-                var sourceCompositions = new List<PlanGenepackCompositionDiagnostic>();
-
-                foreach (PlanGenepackCompositionDiagnostic composition in availableGenepackCompositions)
-                {
-                    if (ContainsGene(composition.Genes, desiredGene))
-                        sourceCompositions.Add(composition);
-                }
+                IReadOnlyList<PlanGenepackCompositionDiagnostic> sourceCompositions =
+                    compositionsByGene.TryGetValue(desiredGene, out List<PlanGenepackCompositionDiagnostic> matchingList)
+                        ? matchingList
+                        : Array.Empty<PlanGenepackCompositionDiagnostic>();
 
                 PlanGeneCoverageState state = ClassifyGeneCoverage(readinessMode, sourceCompositions);
 
@@ -156,17 +172,6 @@ namespace XenogermPlanner.Analysis
                         readinessMode,
                         "Unknown plan readiness mode.");
             }
-        }
-
-        private static bool ContainsGene(IEnumerable<GeneDef> genes, GeneDef expectedGene)
-        {
-            foreach (GeneDef gene in genes)
-            {
-                if (gene == expectedGene)
-                    return true;
-            }
-
-            return false;
         }
     }
 }
